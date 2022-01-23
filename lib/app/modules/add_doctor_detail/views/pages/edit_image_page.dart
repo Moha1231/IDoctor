@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/add_doctor_detail/controllers/add_doctor_detail_controller.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as p;
 
 class EditImagePage extends GetView<AddDoctorDetailController> {
   @override
   Widget build(BuildContext context) {
-    var image;
-    var imageFile;
+    final ImagePicker _picker = ImagePicker();
+    XFile? image;
+    File? imageFile;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -42,21 +41,17 @@ class EditImagePage extends GetView<AddDoctorDetailController> {
               width: 330,
               child: GestureDetector(
                 onTap: () async {
-                  image = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
+                  image = await _picker.pickImage(source: ImageSource.gallery);
 
                   if (image == null) return;
-
-                  final location = await getApplicationDocumentsDirectory();
-                  final name = p.basename(image.path);
-                  imageFile = File('${location.path}/$name');
+                  imageFile = File(image!.path);
                   controller.update();
                 },
                 child: GetBuilder<AddDoctorDetailController>(
                   builder: (_) {
                     if (image != null) {
                       return Image.file(
-                        imageFile,
+                        imageFile!,
                         height: 350,
                       );
                     } else {
@@ -77,7 +72,7 @@ class EditImagePage extends GetView<AddDoctorDetailController> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (imageFile == null) return;
-                        controller.updateProfilePic(imageFile);
+                        controller.updateProfilePic(imageFile!);
                       },
                       child: const Text(
                         'Update',

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 
 import 'firebase_service.dart';
@@ -25,8 +28,12 @@ class AuthService {
       UserService.user = result.user;
       await UserService.user!.updateDisplayName(username);
       await FirebaseService().userSetup(result.user!, username);
+    } on FirebaseAuthException catch (e) {
+      return Future.error(e.message!);
+    } on SocketException catch (e) {
+      return Future.error(e.message);
     } catch (e) {
-      Future.error(e.toString());
+      return Future.error(e.toString());
     }
   }
 
@@ -81,5 +88,6 @@ class AuthService {
 
   Future logout() async {
     _auth.signOut();
+    DoctorService.doctor = null;
   }
 }

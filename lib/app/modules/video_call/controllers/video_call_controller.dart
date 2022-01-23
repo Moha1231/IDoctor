@@ -2,20 +2,15 @@ import 'package:agora_uikit/agora_uikit.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
+import 'package:hallo_doctor_doctor_app/app/services/videocall_service.dart';
 
 class VideoCallController extends GetxController {
-  TimeSlot orderedTimeslot = Get.arguments;
+  TimeSlot orderedTimeslot = Get.arguments[0]['timeSlot'];
+  String token = Get.arguments[0]['token'];
+  String room = Get.arguments[0]['room'];
   int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
-  final AgoraClient client = AgoraClient(
-    agoraConnectionData: AgoraConnectionData(
-      appId: "5918380664394b78bd3b16842b254f3c",
-      channelName: "test",
-    ),
-    enabledPermission: [
-      Permission.camera,
-      Permission.microphone,
-    ],
-  );
+  bool videoCallEstablished = false;
+  late final AgoraClient? client;
   @override
   void onInit() {
     super.onInit();
@@ -23,7 +18,28 @@ class VideoCallController extends GetxController {
   }
 
   void initAgora() async {
-    await client.initialize();
+    print('token' + token);
+    print('room name : ' + room);
+    client = AgoraClient(
+      agoraEventHandlers: AgoraEventHandlers(
+        userOffline: (i, j) {
+          endMeeting();
+        },
+        leaveChannel: (stats) {
+          endMeeting();
+        },
+      ),
+      agoraConnectionData: AgoraConnectionData(
+        tempToken: token,
+        appId: "5918380664394b78bd3b16842b254f3c",
+        channelName: room,
+      ),
+      enabledPermission: [
+        Permission.camera,
+        Permission.microphone,
+      ],
+    );
+    await client!.initialize();
   }
 
   @override
@@ -33,14 +49,22 @@ class VideoCallController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    client!.sessionController.endCall();
+  }
 
   void hangUp() async {
     Get.back();
   }
 
   void finishVideocall() {
-    TimeSlotService().setTimeslotFinish(orderedTimeslot);
     hangUp();
+  }
+
+  endMeeting() async {
+    await VideoCallService().removeRoom(orderedTimeslot.timeSlotId!);
+    TimeSlotService().setTimeslotFinish(orderedTimeslot);
+    client!.sessionController.endCall();
+    Get.back();
   }
 }

@@ -99,13 +99,15 @@ class TimeSlotService {
     }
   }
 
-  setTimeslotFinish(TimeSlot timeSlot) async {
-    // timeSlot.status = 'completed';
-    // final ParseResponse apiResponse = await timeSlot.save();
-    // if (apiResponse.success) {
-    //   print('success completed timeslot');
-    // } else {
-    //   return Future.error(apiResponse.error!.message);
-    // }
+  Future setTimeslotFinish(TimeSlot timeSlot) async {
+    try {
+      var timeSlotRef = await FirebaseFirestore.instance
+          .collection('DoctorTimeslot')
+          .doc(timeSlot.timeSlotId)
+          .get();
+      await timeSlotRef.reference.update({'status': 'complete'});
+    } catch (e) {
+      return Future.error(e.toString());
+    }
   }
 }

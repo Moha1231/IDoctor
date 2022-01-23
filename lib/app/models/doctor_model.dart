@@ -38,6 +38,6 @@ class Doctor {
         doctorShortBiography: data[_doctorShortBiography],
         doctorCategory: DoctorCategory.fromJson(data[_doctorCategory]),
         doctorHospital: data[_doctorHospital],
-        doctorBalance: data[_doctorBalance]);
+        doctorBalance: data[_doctorBalance] ?? 0);
   }
 }
