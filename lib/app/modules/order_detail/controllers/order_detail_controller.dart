@@ -22,7 +22,7 @@ class OrderDetailController extends GetxController {
         'room': orderedTimeslot.timeSlotId,
         'token': token
       };
-      await database.child('room/' + orderedTimeslot.timeSlotId!).set(roomData);
+      database.child('room/' + orderedTimeslot.timeSlotId!).set(roomData);
       EasyLoading.dismiss();
       Get.toNamed(
         '/video-call',

@@ -5,11 +5,16 @@ class VideoCallService {
   var database = FirebaseDatabase.instance.ref();
 
   Future<String> getAgoraToken(String roomName) async {
-    var callable = FirebaseFunctions.instance.httpsCallable('generateToken');
-    final results =
-        await callable({'channelName': roomName, 'role': 'publisher'});
-    var clientSecret = results.data;
-    return clientSecret;
+    try {
+      var callable = FirebaseFunctions.instance.httpsCallable('generateToken');
+      final results =
+          await callable({'channelName': roomName, 'role': 'publisher'});
+      var clientSecret = results.data;
+      print('token : ' + clientSecret);
+      return clientSecret;
+    } catch (e) {
+      return Future.error(e.toString());
+    }
   }
 
   Future removeRoom(String roomName) async {

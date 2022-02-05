@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController

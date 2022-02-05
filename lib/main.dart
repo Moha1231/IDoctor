@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -15,7 +14,6 @@ import 'app/services/firebase_service.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
   await Firebase.initializeApp();
   await GetStorage.init();
   //NotificationService().initNotification();

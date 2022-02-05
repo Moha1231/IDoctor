@@ -6,7 +6,7 @@ Widget titleApp() {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Image.asset(
-        'assets/icons/app_icon.png',
+        'assets/icons/ic_launcher.png',
         width: 45,
         height: 45,
       ),

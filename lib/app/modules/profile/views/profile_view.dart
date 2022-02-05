@@ -101,6 +101,7 @@ class ProfileView extends GetView<ProfileController> {
             text: 'Logout',
             hideArrowIcon: true,
           ),
+          //test button, you can delete it
           // ElevatedButton(
           //     onPressed: () {
           //       controller.test();

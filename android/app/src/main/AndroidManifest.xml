@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dancingwhale.hallo_doctor_doctor_app">
    <application
-        android:label="hallo_doctor_doctor_app"
+        android:label="Doctor App Hallo Doctor"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
