@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/videocall_service.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/environment.dart';
 
 class VideoCallController extends GetxController {
   TimeSlot orderedTimeslot = Get.arguments[0]['timeSlot'];
@@ -31,7 +32,7 @@ class VideoCallController extends GetxController {
       ),
       agoraConnectionData: AgoraConnectionData(
         tempToken: token,
-        appId: "5918380664394b78bd3b16842b254f3c",
+        appId: Environment.agoraAppId,
         channelName: room,
       ),
       enabledPermission: [
