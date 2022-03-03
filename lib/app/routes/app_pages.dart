@@ -8,6 +8,8 @@ import 'package:hallo_doctor_doctor_app/app/modules/appointment/bindings/appoint
 import 'package:hallo_doctor_doctor_app/app/modules/appointment/views/appointment_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/balance/bindings/balance_binding.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/balance/views/balance_view.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/chat/bindings/chat_binding.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/chat/views/chat_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/bindings/edit_profile_binding.dart';
@@ -16,6 +18,8 @@ import 'package:hallo_doctor_doctor_app/app/modules/forgot_password/bindings/for
 import 'package:hallo_doctor_doctor_app/app/modules/forgot_password/views/forgot_password_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/bindings/home_binding.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/home_view.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/list_chat/bindings/list_chat_binding.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/list_chat/views/list_chat_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/login/bindings/login_binding.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/login/views/login_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/order/bindings/order_binding.dart';
@@ -128,6 +132,16 @@ class AppPages {
       name: _Paths.FORGOT_PASSWORD,
       page: () => ForgotPasswordView(),
       binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => ChatView(),
+      binding: ChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_CHAT,
+      page: () => ListChatView(),
+      binding: ListChatBinding(),
     ),
   ];
 }

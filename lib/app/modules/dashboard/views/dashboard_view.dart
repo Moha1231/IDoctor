@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/appointment/views/appointment_view.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/chat/views/chat_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/home_view.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/list_chat/views/list_chat_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/order/views/order_view.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/profile/views/profile_view.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
@@ -14,6 +16,7 @@ class DashboardView extends GetView<DashboardController> {
     HomeView(),
     AppointmentView(),
     OrderView(),
+    ListChatView(),
     ProfileView()
   ];
   void updateTabSelection(int index) {
@@ -78,11 +81,24 @@ class DashboardView extends GetView<DashboardController> {
                 IconButton(
                   onPressed: () {
                     updateTabSelection(3);
+                    //controller.initTabOrder();
+                  },
+                  iconSize: 27.0,
+                  icon: Icon(
+                    Icons.chat,
+                    color: controller.selectedIndex == 3
+                        ? Styles.primaryBlueColor
+                        : Colors.grey.shade400,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    updateTabSelection(4);
                   },
                   iconSize: 27.0,
                   icon: Icon(
                     Icons.person,
-                    color: controller.selectedIndex == 3
+                    color: controller.selectedIndex == 4
                         ? Styles.primaryBlueColor
                         : Colors.grey.shade400,
                   ),

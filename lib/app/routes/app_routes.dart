@@ -23,6 +23,8 @@ abstract class Routes {
   static const WITHDRAW_DETAIL = _Paths.WITHDRAW_DETAIL;
   static const WITHRAW_FINISH = _Paths.WITHRAW_FINISH;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const CHAT = _Paths.CHAT;
+  static const LIST_CHAT = _Paths.LIST_CHAT;
 }
 
 abstract class _Paths {
@@ -43,4 +45,6 @@ abstract class _Paths {
   static const WITHDRAW_DETAIL = '/withdraw-detail';
   static const WITHRAW_FINISH = '/withraw-finish';
   static const FORGOT_PASSWORD = '/forgot-password';
+  static const CHAT = '/chat';
+  static const LIST_CHAT = '/list-chat';
 }

@@ -37,6 +37,14 @@ dependencies:
   agora_uikit: ^0.0.4
   firebase_database: ^9.0.6
   flutter_dotenv: ^5.0.2
+  flutter_chat_ui:
+    git: https://github.com/amsyary/flutter_chat_ui.git
+  uuid: ^3.0.6
+  file_picker: ^4.5.0
+  mime: ^1.0.1
+  open_file: ^3.2.1
+  flutter_firebase_chat_core:
+    git: https://github.com/amsyary/flutter_firebase_chat_core.git
 
 dev_dependencies:
   flutter_lints: ^1.0.0
