@@ -21,8 +21,9 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   @override
   void onReady() async {
     super.onReady();
-    if (!checkDetailDoctor()) Get.offNamed('/add-doctor-detail');
     var doctor = await DoctorService().getDoctor();
+
+    if (doctor == null) return Get.offNamed('/add-doctor-detail');
     username.value = UserService().currentUser!.displayName!;
     UserService()
         .getPhotoUrl()

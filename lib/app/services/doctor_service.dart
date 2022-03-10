@@ -46,8 +46,8 @@ class DoctorService {
           .collection('Doctors')
           .doc(doctorId)
           .get();
-
-      print('data gaes : ' + doctorReference.data().toString());
+      if (!doctorReference.exists) return null;
+      print('data doctor : ' + doctorReference.data().toString());
       var data = doctorReference.data() as Map<String, dynamic>;
       data['doctorId'] = doctorId;
       Doctor doctor = Doctor.fromJson(data);
@@ -55,7 +55,7 @@ class DoctorService {
       DoctorService().currentDoctor = doctor;
       return doctor;
     } catch (e) {
-      return Future.error(e.toString());
+      return null;
     }
   }
 }

@@ -67,7 +67,7 @@ class AddDoctorDetailController extends GetxController
     });
   }
 
-  void saveDoctorDetail() {
+  void saveDoctorDetail() async {
     if (profilePicUrl.value.isEmpty) {
       exceptionToast('Please choose your profile photo');
       return;
@@ -80,17 +80,19 @@ class AddDoctorDetailController extends GetxController
       formkey.currentState!.save();
       EasyLoading.show(
           status: 'loading...', maskType: EasyLoadingMaskType.black);
-      DoctorService()
-          .saveDoctorDetail(doctorName.value, doctorHospital.value,
-              shortBiography.value, profilePicUrl.value, doctorCategory!)
-          .then((value) {
-        GetStorage().write(checkDoctorDetail, true);
+      try {
+        await DoctorService().saveDoctorDetail(
+            doctorName.value,
+            doctorHospital.value,
+            shortBiography.value,
+            profilePicUrl.value,
+            doctorCategory!);
         Get.offNamed('/dashboard');
-      }).catchError((err) {
-        exceptionToast(err.toString());
-      }).whenComplete(() {
         EasyLoading.dismiss();
-      });
+      } catch (e) {
+        Fluttertoast.showToast(msg: e.toString());
+        EasyLoading.dismiss();
+      }
     }
   }
 }
