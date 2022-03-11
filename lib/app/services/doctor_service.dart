@@ -28,9 +28,8 @@ class DoctorService {
         'doctorBasePrice': 10
       };
 
-      doctors.add(doctorsData).then((value) {
-        UserService().setDoctorId(value.id);
-      });
+      var doctor = await doctors.add(doctorsData);
+      UserService().setDoctorId(doctor.id);
     } catch (e) {
       return Future.error(e);
     }

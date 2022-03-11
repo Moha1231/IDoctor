@@ -30,7 +30,7 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
         .then((urlPicture) => profilePic.value = urlPicture);
 
     await getListAppointment();
-    await getListReview(doctor!);
+    await getListReview(doctor);
     getBalance();
   }
 
