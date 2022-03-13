@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 import '../controllers/appointment_controller.dart';
@@ -9,6 +10,11 @@ import '../controllers/appointment_controller.dart';
 enum TimeSlotViewType { add, edit }
 
 class AppointmentView extends GetView<AppointmentController> {
+  DateTime dateTimePast = Jiffy(DateTime.now().toUtc())
+      .subtract(months: 1)
+      .dateTime; //range calendar 1 month past from now
+  DateTime dateTimeFuture =
+      Jiffy(DateTime.now().toUtc()).add(months: 6).dateTime; //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +43,8 @@ class AppointmentView extends GetView<AppointmentController> {
                         formatButtonShowsNext: false,
                       ),
                       focusedDay: controller.selectedDay.value,
-                      firstDay: DateTime.utc(2021, 10, 16),
-                      lastDay: DateTime.utc(2022, 3, 14),
+                      firstDay: dateTimePast,
+                      lastDay: dateTimeFuture,
                       eventLoader: controller.getEventsfromDay,
                       selectedDayPredicate: (day) {
                         return isSameDay(controller.selectedDay.value, day);
