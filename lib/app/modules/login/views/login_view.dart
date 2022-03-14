@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                                 )),
                             validator: ((value) {
                               if (value!.isEmpty) {
-                                return 'Password tidak boleh kosong';
+                                return 'Password cannot be empty';
                               } else {
                                 return null;
                               }

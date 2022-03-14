@@ -4,6 +4,7 @@ import 'package:hallo_doctor_doctor_app/app/modules/home/controllers/home_contro
 import 'package:hallo_doctor_doctor_app/app/modules/order/controllers/order_controller.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/profile/controllers/profile_controller.dart';
 
+import '../../../services/notification_service.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardBinding extends Bindings {
@@ -11,6 +12,9 @@ class DashboardBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<DashboardController>(
       () => DashboardController(),
+    );
+    Get.lazyPut<NotificationService>(
+      () => NotificationService(),
     );
     Get.lazyPut<HomeController>(
       () => HomeController(),
