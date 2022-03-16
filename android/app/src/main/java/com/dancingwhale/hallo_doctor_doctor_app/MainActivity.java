@@ -1,4 +1,4 @@
-package com.bernsoft.daktaricalldoctor;
+package com.dancingwhale.hallo_doctor_doctor_app;
 
 import io.flutter.embedding.android.FlutterActivity;
 
