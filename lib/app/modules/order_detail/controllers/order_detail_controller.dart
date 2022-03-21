@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -23,9 +24,11 @@ class OrderDetailController extends GetxController {
           await VideoCallService().getAgoraToken(orderedTimeslot.timeSlotId!);
       final roomData = <String, dynamic>{
         'room': orderedTimeslot.timeSlotId,
-        'token': token
+        'token': token,
+        'timestamp': Timestamp.fromDate(DateTime.now())
       };
-      database.child('room/' + orderedTimeslot.timeSlotId!).set(roomData);
+      await VideoCallService()
+          .createRoom(orderedTimeslot.timeSlotId!, roomData);
       notificationService.notificationStartAppointment(
           DoctorService.doctor!.doctorName!,
           orderedTimeslot.bookByWho!.userId!);
@@ -36,7 +39,7 @@ class OrderDetailController extends GetxController {
           {
             'token': token,
             'room': orderedTimeslot.timeSlotId,
-            'timeSlot': orderedTimeslot
+            'timeSlot': orderedTimeslot,
           }
         ],
       );

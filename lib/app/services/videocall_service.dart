@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -17,9 +18,24 @@ class VideoCallService {
     }
   }
 
-  Future removeRoom(String roomName) async {
+  Future removeRoom(String roomId) async {
     try {
-      await database.child('room/' + roomName).remove();
+      await FirebaseFirestore.instance
+          .collection('RoomVideoCall')
+          .doc(roomId)
+          .delete();
+      //await database.child('room/' + roomName).remove();
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future createRoom(String roomId, Map<String, dynamic> roomData) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('RoomVideoCall')
+          .doc(roomId)
+          .set(roomData);
     } catch (e) {
       return Future.error(e.toString());
     }
