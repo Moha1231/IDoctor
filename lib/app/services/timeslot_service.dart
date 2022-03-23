@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 
@@ -106,6 +107,15 @@ class TimeSlotService {
           .doc(timeSlot.timeSlotId)
           .get();
       await timeSlotRef.reference.update({'status': 'complete'});
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future cancelAppointment(TimeSlot timeSlot) async {
+    try {
+      var callable = FirebaseFunctions.instance.httpsCallable('refundTimeslot');
+      await callable({'timeSlotId': timeSlot.timeSlotId});
     } catch (e) {
       return Future.error(e.toString());
     }

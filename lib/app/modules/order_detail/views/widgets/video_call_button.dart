@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
-Widget videoCallButton({required VoidCallback onTap, required String text}) {
+Widget videoCallButton(
+    {required VoidCallback onTap, required String text, bool active = true}) {
   return InkWell(
-    onTap: onTap,
+    onTap: active ? onTap : null,
     child: Container(
       width: Get.width,
       padding: EdgeInsets.symmetric(vertical: 15),
@@ -19,9 +21,12 @@ Widget videoCallButton({required VoidCallback onTap, required String text}) {
                 spreadRadius: 2)
           ],
           gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Styles.secondaryBlueColor, Styles.primaryBlueColor])),
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: active == true
+                ? [Styles.secondaryBlueColor, Styles.primaryBlueColor]
+                : [Colors.grey, Colors.grey],
+          )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

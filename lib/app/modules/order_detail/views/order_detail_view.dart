@@ -1,5 +1,6 @@
 import 'package:date_count_down/date_count_down.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,10 +24,56 @@ class OrderDetailView extends GetView<OrderDetailController> {
           style: Styles.appBarTextStyle,
         ),
         leading: IconButton(
-            onPressed: () {
-              Get.back();
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_rounded),
+        ),
+        actions: [
+          //list if widget in appbar actions
+          PopupMenuButton(
+            color: Colors.white,
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text(
+                  "Cancel Appointment",
+                ),
+              ),
+            ],
+            onSelected: (int item) => {
+              if (item == 0)
+                {
+                  //cancel appointment click
+                  Get.defaultDialog(
+                      title: 'Cancel Appointment',
+                      content: Text(
+                        'are you sure you want to cancel this appointment',
+                        textAlign: TextAlign.center,
+                      ),
+                      onCancel: () {},
+                      onConfirm: () {
+                        if (controller.orderedTimeslot.status == 'booked') {
+                          Get.back();
+                          controller.cancelAppointment();
+                        }
+                        if (controller.orderedTimeslot.status == 'refund') {
+                          Fluttertoast.showToast(
+                              msg:
+                                  'the appointment has been previously canceled');
+                          Get.back();
+                        }
+                        if (controller.orderedTimeslot.status == 'complete') {
+                          Fluttertoast.showToast(
+                              msg:
+                                  'The meeting has started and can\'t be canceled anymore');
+                          Get.back();
+                        }
+                      })
+                }
             },
-            icon: Icon(Icons.arrow_back_ios_rounded)),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -63,7 +110,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 8),
-                height: 200,
+                height: 240,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
@@ -106,6 +153,15 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             ),
                           ),
                         ]),
+                        TableRow(children: [
+                          SizedBox(height: 50, child: Text('Status')),
+                          SizedBox(
+                            height: 50,
+                            child: Text(
+                              controller.orderedTimeslot.status ?? "",
+                            ),
+                          ),
+                        ]),
                       ],
                     ),
                   ],
@@ -121,18 +177,22 @@ class OrderDetailView extends GetView<OrderDetailController> {
               SizedBox(
                 height: 10,
               ),
-              CountDownText(
-                due: controller.orderedTimeslot.timeSlot!.toLocal(),
-                finishedText: "",
-                showLabel: true,
-                longDateName: true,
-                style: GoogleFonts.nunito(
-                    color: Styles.primaryBlueColor, fontSize: 15),
-              ),
+              Obx(() => Visibility(
+                    visible: controller.active.value,
+                    child: CountDownText(
+                      due: controller.orderedTimeslot.timeSlot!.toLocal(),
+                      finishedText: "",
+                      showLabel: true,
+                      longDateName: true,
+                      style: GoogleFonts.nunito(
+                          color: Styles.primaryBlueColor, fontSize: 15),
+                    ),
+                  )),
               SizedBox(
                 height: 20,
               ),
-              videoCallButton(
+              Obx(() => videoCallButton(
+                  active: controller.active.value,
                   onTap: () {
                     Get.defaultDialog(
                         title: 'Start Appointment',
@@ -145,7 +205,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                           controller.videoCall();
                         });
                   },
-                  text: 'Start Appointment'),
+                  text: 'Start Appointment')),
               SizedBox(
                 height: 10,
               ),

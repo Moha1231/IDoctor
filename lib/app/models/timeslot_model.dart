@@ -21,7 +21,7 @@ class TimeSlot {
   static const String _doctorId = 'doctorId';
   static const String _bookByWho = 'bookByWho';
   static const String _purchaseTime = 'purchaseTime';
-  static const String _status = '';
+  static const String _status = 'status';
 
   String? timeSlotId;
   DateTime? timeSlot;
