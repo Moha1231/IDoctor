@@ -14,10 +14,12 @@ class OrderDetailController extends GetxController {
   var database = FirebaseDatabase.instance.ref();
   NotificationService notificationService = Get.find<NotificationService>();
   var active = true.obs;
+  bool isReschedule = false;
   @override
   void onInit() {
     super.onInit();
     if (orderedTimeslot.status == 'refund') active.value = false;
+    if (orderedTimeslot.pastTimeSlot != null) isReschedule = true;
   }
 
   @override

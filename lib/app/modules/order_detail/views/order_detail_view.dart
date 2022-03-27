@@ -110,7 +110,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 8),
-                height: 240,
+                height: controller.isReschedule ? 290 : 240,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
@@ -129,10 +129,24 @@ class OrderDetailView extends GetView<OrderDetailController> {
                         TableRow(children: [
                           SizedBox(height: 50, child: Text('Appointment Time')),
                           SizedBox(
-                              height: 50,
-                              child: Text(TimeFormat().formatDate(
-                                  controller.orderedTimeslot.timeSlot!))),
+                            height: 50,
+                            child: Text(TimeFormat().formatDate(
+                                controller.orderedTimeslot.timeSlot!)),
+                          )
                         ]),
+                        controller.isReschedule
+                            ? TableRow(children: [
+                                SizedBox(
+                                    height: 50, child: Text('Reschedule From')),
+                                SizedBox(
+                                  height: 50,
+                                  child: Text(TimeFormat().formatDate(controller
+                                      .orderedTimeslot.pastTimeSlot!)),
+                                )
+                              ])
+                            : TableRow(
+                                children: [SizedBox(), SizedBox()],
+                              ),
                         TableRow(children: [
                           SizedBox(height: 50, child: Text('Duration')),
                           SizedBox(

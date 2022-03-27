@@ -6,6 +6,7 @@ class TimeSlot {
   TimeSlot(
       {this.timeSlotId,
       this.timeSlot,
+      this.pastTimeSlot,
       this.duration,
       this.price,
       this.available,
@@ -22,9 +23,11 @@ class TimeSlot {
   static const String _bookByWho = 'bookByWho';
   static const String _purchaseTime = 'purchaseTime';
   static const String _status = 'status';
+  static const String _pastTimeSlot = 'pastTimeSlot';
 
   String? timeSlotId;
   DateTime? timeSlot;
+  DateTime? pastTimeSlot;
   int? duration;
   int? price;
   bool? available;
@@ -37,6 +40,9 @@ class TimeSlot {
     return TimeSlot(
         timeSlotId: jsonData[_timeSlotId],
         timeSlot: (jsonData[_timeSlot] as Timestamp).toDate(),
+        pastTimeSlot: jsonData[_pastTimeSlot] != null
+            ? (jsonData[_pastTimeSlot] as Timestamp).toDate()
+            : null,
         duration: jsonData[_duration],
         price: jsonData[_price],
         available: jsonData[_available],

@@ -19,7 +19,7 @@ class OrderView extends GetView<OrderController> {
           centerTitle: true,
           backgroundColor: Colors.white,
         ),
-        body: SingleChildScrollView(
+        body: Container(
           child: controller.obx(
             (listOrder) => ListView.builder(
               shrinkWrap: true,
