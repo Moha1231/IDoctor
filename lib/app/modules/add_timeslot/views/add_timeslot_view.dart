@@ -1,8 +1,11 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
+import 'package:hallo_doctor_doctor_app/app/models/repeat_duration_model.dart';
+import 'package:hallo_doctor_doctor_app/app/models/repeat_model.dart';
 
 import '../controllers/add_timeslot_controller.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +22,22 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
           ),
         )
         .toList();
+    List<RepeatTimeslot> listRepeat = [
+      controller.repeat,
+      RepeatTimeslot(repeatText: 'Every Day', repeat: Repeat.EVERY_DAY),
+      RepeatTimeslot(
+          repeatText: 'Same Day Every Week',
+          repeat: Repeat.SAME_DAY_EVERY_WEEK),
+      RepeatTimeslot(
+          repeatText: 'Same Day Every Month',
+          repeat: Repeat.SAME_DAY_EVERY_MONTH),
+    ];
+    List<RepeatDuration> listRepeatDuration = [
+      controller.repeatDuration,
+      RepeatDuration(month: 3, monthText: '3 Month'),
+      RepeatDuration(month: 6, monthText: '6 Month'),
+      RepeatDuration(month: 12, monthText: '12 Month')
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Timeslot'),
@@ -45,7 +64,17 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                 ),
                 IconButton(
                   onPressed: () {
-                    controller.deleteTimeSlot();
+                    Get.defaultDialog(
+                      title: 'Delete Time Slot',
+                      middleText:
+                          'are you sure you want to delete this timeslot',
+                      radius: 15,
+                      textCancel: 'Cancel',
+                      textConfirm: 'Delete',
+                      onConfirm: () {
+                        controller.deleteTimeSlot();
+                      },
+                    );
                   },
                   icon: Icon(Icons.delete),
                 )
@@ -120,7 +149,56 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       prefixIcon: Icon(Icons.date_range_outlined)),
-                )
+                ),
+                Divider(),
+                GetBuilder<AddTimeslotController>(
+                  builder: (_) {
+                    return Visibility(
+                      visible: !controller.isEditMode,
+                      child: DropdownSearch<RepeatTimeslot>(
+                        mode: Mode.MENU,
+                        items: listRepeat,
+                        itemAsString: (repeatTimeslot) =>
+                            repeatTimeslot!.repeatText,
+                        onChanged: (RepeatTimeslot? dropdown) {
+                          if (dropdown != controller.repeat) {
+                            controller.repeatDurationVisibility.value = true;
+                          } else {
+                            controller.repeatDurationVisibility.value = false;
+                          }
+                        },
+                        selectedItem: controller.repeat,
+                        dropdownSearchDecoration: InputDecoration(
+                            border: InputBorder.none,
+                            prefixIcon: Icon(Icons.refresh),
+                            label: Text('Repeat Timeslot')),
+                        onSaved: (RepeatTimeslot? repeat) {
+                          controller.repeat = repeat!;
+                        },
+                      ),
+                    );
+                  },
+                ),
+                Divider(),
+                Obx(() => Visibility(
+                      visible: controller.repeatDurationVisibility.value,
+                      child: DropdownSearch<RepeatDuration>(
+                        mode: Mode.MENU,
+                        items: listRepeatDuration,
+                        itemAsString: (repeatDuration) {
+                          return repeatDuration!.monthText;
+                        },
+                        onChanged: print,
+                        selectedItem: controller.repeatDuration,
+                        dropdownSearchDecoration: InputDecoration(
+                            border: InputBorder.none,
+                            prefixIcon: Icon(Icons.date_range_outlined),
+                            label: Text('Repeat for how long')),
+                        onSaved: (RepeatDuration? repeatDuration) {
+                          controller.repeatDuration = repeatDuration!;
+                        },
+                      ),
+                    )),
               ],
             ),
           ),

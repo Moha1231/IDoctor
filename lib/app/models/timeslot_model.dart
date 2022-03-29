@@ -13,7 +13,8 @@ class TimeSlot {
       this.doctorid,
       this.bookByWho,
       this.purchaseTime,
-      this.status});
+      this.status,
+      this.parentTimeslotId});
   static const String _timeSlotId = 'timeSlotId';
   static const String _timeSlot = 'timeSlot';
   static const String _duration = 'duration';
@@ -24,6 +25,8 @@ class TimeSlot {
   static const String _purchaseTime = 'purchaseTime';
   static const String _status = 'status';
   static const String _pastTimeSlot = 'pastTimeSlot';
+  static const String _repeatTimeSlot = 'repeatTimeSlot';
+  static const String _parentTimeslotId = 'parentTimeslotId';
 
   String? timeSlotId;
   DateTime? timeSlot;
@@ -35,6 +38,8 @@ class TimeSlot {
   UserModel? bookByWho;
   DateTime? purchaseTime;
   String? status;
+  List<DateTime>? repeatTimeSlot;
+  String? parentTimeslotId;
 
   factory TimeSlot.fromJson(Map<String, dynamic> jsonData) {
     return TimeSlot(
@@ -53,16 +58,28 @@ class TimeSlot {
         purchaseTime: jsonData[_purchaseTime] != null
             ? (jsonData[_purchaseTime] as Timestamp).toDate()
             : null,
-        status: jsonData[_status]);
+        status: jsonData[_status],
+        parentTimeslotId: jsonData[_parentTimeslotId]);
   }
 
   Map<String, dynamic> toMap(TimeSlot timeSlot) {
-    return {
-      _timeSlot: Timestamp.fromDate(timeSlot.timeSlot!),
-      _duration: timeSlot.duration,
-      _price: timeSlot.price,
-      _available: timeSlot.available,
-      _doctorId: timeSlot.doctorid
-    };
+    if (timeSlot.timeSlot == null) {
+      return {
+        _duration: timeSlot.duration,
+        _price: timeSlot.price,
+        _available: timeSlot.available,
+        _doctorId: timeSlot.doctorid,
+        _parentTimeslotId: timeSlot.parentTimeslotId
+      };
+    } else {
+      return {
+        _timeSlot: Timestamp.fromDate(timeSlot.timeSlot!),
+        _duration: timeSlot.duration,
+        _price: timeSlot.price,
+        _available: timeSlot.available,
+        _doctorId: timeSlot.doctorid,
+        _parentTimeslotId: timeSlot.parentTimeslotId
+      };
+    }
   }
 }
