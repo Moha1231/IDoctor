@@ -135,7 +135,9 @@ class RegisterView extends GetView<RegisterController> {
                     SizedBox(height: height * .01),
                     divider(),
                     //_googleSignInButton(controller.loginController),
-                    loginAccountLabel(),
+                    loginAccountLabel(onTap: () {
+                      Get.offAllNamed('/login');
+                    }),
                   ],
                 ),
               ),

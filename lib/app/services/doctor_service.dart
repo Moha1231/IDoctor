@@ -8,11 +8,12 @@ class DoctorService {
   set currentDoctor(Doctor? doctor) => DoctorService.doctor = doctor;
 
   Future saveDoctorDetail(
-      String doctorName,
-      String hospital,
-      String shortBiography,
-      String pictureUrl,
-      DoctorCategory doctorCategory) async {
+      {required String doctorName,
+      required String hospital,
+      required String shortBiography,
+      required String pictureUrl,
+      required DoctorCategory doctorCategory,
+      bool isUpdate = false}) async {
     try {
       CollectionReference doctors =
           FirebaseFirestore.instance.collection('Doctors');
@@ -28,16 +29,25 @@ class DoctorService {
         'doctorBasePrice': 10
       };
 
-      var doctor = await doctors.add(doctorsData);
-      UserService().setDoctorId(doctor.id);
+      if (isUpdate) {
+        await doctors.doc(DoctorService.doctor!.doctorId).update(doctorsData);
+        await getDoctor(forceGet: true);
+      } else {
+        var doctor = await doctors.add(doctorsData);
+        UserService().setDoctorId(doctor.id);
+      }
     } catch (e) {
       return Future.error(e);
     }
   }
 
-  Future<Doctor?> getDoctor() async {
+  ///get doctor, if current doctor is null will get from server
+  ///[forceGet] if true will force get from server even if current doctor is not null
+  Future<Doctor?> getDoctor({bool forceGet = false}) async {
     try {
-      if (DoctorService.doctor != null) return DoctorService.doctor;
+      if (DoctorService.doctor != null && forceGet == false) {
+        return DoctorService.doctor;
+      }
 
       var doctorId = await UserService().getDoctorId();
       print('doctor id : ' + doctorId);

@@ -27,10 +27,12 @@ class AddDoctorDetailController extends GetxController
   DoctorCategory? doctorCategory;
   Doctor? doctor = Get.arguments;
   var profilePicUrl = ''.obs;
+  bool isEdit = false;
   @override
   void onInit() {
     super.onInit();
     if (doctor != null) {
+      isEdit = true;
       profilePicUrl.value = doctor!.doctorPicture!;
       doctorName.value = doctor!.doctorName!;
       doctorHospital.value = doctor!.doctorHospital!;
@@ -82,11 +84,12 @@ class AddDoctorDetailController extends GetxController
           status: 'loading...', maskType: EasyLoadingMaskType.black);
       try {
         await DoctorService().saveDoctorDetail(
-            doctorName.value,
-            doctorHospital.value,
-            shortBiography.value,
-            profilePicUrl.value,
-            doctorCategory!);
+            doctorName: doctorName.value,
+            hospital: doctorHospital.value,
+            shortBiography: shortBiography.value,
+            pictureUrl: profilePicUrl.value,
+            doctorCategory: doctorCategory!,
+            isUpdate: isEdit);
         Get.offNamed('/dashboard');
         EasyLoading.dismiss();
       } catch (e) {

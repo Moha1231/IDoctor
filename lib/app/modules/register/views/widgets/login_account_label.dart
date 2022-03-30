@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
-Widget loginAccountLabel() {
+Widget loginAccountLabel({required VoidCallback onTap}) {
   return InkWell(
-    onTap: () {},
+    onTap: onTap,
     child: Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       padding: EdgeInsets.all(15),
