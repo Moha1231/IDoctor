@@ -37,54 +37,114 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                 height: 10,
               ),
               Container(
-                height: 175,
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Color(0x10000000),
-                        blurRadius: 10,
-                        spreadRadius: 4,
-                        offset: Offset(0.0, 8.0))
-                  ],
-                ),
-                alignment: Alignment.topCenter,
-                child: Table(
-                  children: [
-                    TableRow(children: [
-                      SizedBox(height: 30, child: Text('Withdraw Method')),
-                      SizedBox(height: 30, child: Text(': Paypal')),
-                    ]),
-                    TableRow(children: [
-                      SizedBox(height: 30, child: Text('Name')),
-                      SizedBox(
-                          height: 30,
-                          child: Text(': ' + controller.withdrawMethod.name!)),
-                    ]),
-                    TableRow(children: [
-                      SizedBox(height: 40, child: Text('Email')),
-                      SizedBox(
-                          height: 40,
-                          child: FittedBox(
-                              fit: BoxFit.fitWidth,
+                  height: 240,
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color(0x10000000),
+                          blurRadius: 10,
+                          spreadRadius: 4,
+                          offset: Offset(0.0, 8.0))
+                    ],
+                  ),
+                  alignment: Alignment.topCenter,
+                  child: GetBuilder<WithdrawDetailController>(
+                    builder: (_) {
+                      return Table(
+                        children: [
+                          TableRow(children: [
+                            SizedBox(
+                                height: 30, child: Text('Withdraw Method')),
+                            SizedBox(height: 30, child: Text(': Paypal')),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(height: 30, child: Text('Name')),
+                            SizedBox(
+                                height: 30,
+                                child: Text(
+                                    ': ' + controller.withdrawMethod.name!)),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(height: 40, child: Text('Email')),
+                            SizedBox(
+                              height: 40,
+                              child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                    ': ' + controller.withdrawMethod.email!),
+                              ),
+                            ),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(
+                                height: 30, child: Text('Amount Withdraw')),
+                            SizedBox(
+                              height: 30,
                               child: Text(
-                                  ': ' + controller.withdrawMethod.email!))),
-                    ]),
-                    TableRow(children: [
-                      SizedBox(height: 30, child: Text('Amount')),
-                      SizedBox(
-                        height: 30,
-                        child: Text(
-                          ': ' + currencySign + controller.amount.toString(),
-                        ),
-                      ),
-                    ]),
-                  ],
-                ),
-              ),
+                                ': ' +
+                                    currencySign +
+                                    controller.amount.toString(),
+                              ),
+                            ),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(height: 30, child: Text('Admin Fee')),
+                            SizedBox(
+                              height: 30,
+                              child: controller.percentageCut != null
+                                  ? Text(
+                                      ': (' +
+                                          currencySign +
+                                          controller.percentageCut!
+                                              .toStringAsFixed(2) +
+                                          ")" +
+                                          (controller.withdrawSettingsDetail
+                                                      ?.percentage ??
+                                                  0)
+                                              .toString() +
+                                          '%',
+                                    )
+                                  : Text(''),
+                            ),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(height: 30, child: Text('Tax')),
+                            SizedBox(
+                              height: 30,
+                              child: controller.percentageTaxCut != null
+                                  ? Text(
+                                      ': (' +
+                                          currencySign +
+                                          controller.percentageTaxCut!
+                                              .toStringAsFixed(2) +
+                                          ")" +
+                                          (controller.withdrawSettingsDetail
+                                                      ?.tax ??
+                                                  0)
+                                              .toString() +
+                                          '%',
+                                    )
+                                  : Text(''),
+                            ),
+                          ]),
+                          TableRow(children: [
+                            SizedBox(height: 30, child: Text('Total Withdraw')),
+                            SizedBox(
+                              height: 30,
+                              child: controller.total != null
+                                  ? Text(': ' +
+                                      controller.total!.toStringAsFixed(2))
+                                  : Text(''),
+                            ),
+                          ]),
+                        ],
+                      );
+                    },
+                  )),
               SizedBox(
                 height: 20,
               ),

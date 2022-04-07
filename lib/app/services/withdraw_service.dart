@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hallo_doctor_doctor_app/app/models/withdraw_method_model.dart';
+import 'package:hallo_doctor_doctor_app/app/models/withdraw_settings_detail.dart';
 import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 
@@ -19,8 +20,13 @@ class WithdrawService {
 
   Future<List<WithdrawMethod>> getWithdrawMethod() async {
     try {
-      var withdrawMethodRef =
-          await FirebaseFirestore.instance.collection('WitdrawMethod').get();
+      var withdrawMethodRef = await FirebaseFirestore.instance
+          .collection('WitdrawMethod')
+          .where(
+            'userId',
+            isEqualTo: UserService().currentUser!.uid,
+          )
+          .get();
       List<WithdrawMethod> listWithdrawMethod =
           withdrawMethodRef.docs.map((doc) {
         var data = doc.data();
@@ -46,6 +52,20 @@ class WithdrawService {
           'userId': UserService.user!.uid
         });
       }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future<WithdrawSettingsDetail> getWithdrawSettings() async {
+    try {
+      var snapshot = await FirebaseFirestore.instance
+          .collection('Settings')
+          .doc('withdrawSetting')
+          .get();
+      WithdrawSettingsDetail withdrawSettingsDetail =
+          WithdrawSettingsDetail.fromFirestore(snapshot);
+      return withdrawSettingsDetail;
     } catch (e) {
       return Future.error(e.toString());
     }
