@@ -23,7 +23,13 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
     super.onReady();
     var doctor = await DoctorService().getDoctor();
 
-    if (doctor == null) return Get.offNamed('/add-doctor-detail');
+    if (doctor == null) {
+      if (await UserService().checkIfUserExist() == false) {
+        return Get.offNamed('/login');
+      } else {
+        return Get.offNamed('/add-doctor-detail');
+      }
+    }
     username.value = UserService().currentUser!.displayName!;
     UserService()
         .getPhotoUrl()
