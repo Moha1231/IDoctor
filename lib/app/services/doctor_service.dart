@@ -27,6 +27,7 @@ class DoctorService {
           'categoryName': doctorCategory.categoryName
         },
         'doctorBasePrice': 10,
+        'accountStatus': 'nonactive'
       };
 
       if (isUpdate) {

@@ -66,6 +66,27 @@ class ProfileView extends GetView<ProfileController> {
               ),
             ),
           ),
+          GetBuilder<ProfileController>(
+            builder: (_) {
+              return Visibility(
+                visible: controller.isAccountActivated,
+                child: Container(
+                    height: 30,
+                    color: Colors.red[300],
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Your account is still not activated',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    )),
+              );
+            },
+          ),
           SizedBox(
             height: 20,
           ),
