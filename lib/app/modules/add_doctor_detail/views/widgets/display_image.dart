@@ -11,14 +11,17 @@ class DisplayImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Color.fromRGBO(64, 105, 225, 1);
     return Center(
-        child: Stack(children: [
-      buildImage(color),
-      Positioned(
-        child: buildEditIcon(color),
-        right: 4,
-        top: 10,
-      )
-    ]));
+      child: Stack(
+        children: [
+          buildImage(color),
+          Positioned(
+            child: buildEditIcon(color),
+            right: 4,
+            top: 10,
+          )
+        ],
+      ),
+    );
   }
 
   // Builds Profile Image

@@ -17,7 +17,7 @@ class DoctorCategoryService {
 
     final allData = snapshot.docs.map((doc) {
       var data = doc.data() as Map<String, dynamic>;
-      data['id'] = doc.reference.id;
+      data['categoryId'] = doc.reference.id;
       return data;
     });
 

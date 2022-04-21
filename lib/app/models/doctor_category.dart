@@ -4,7 +4,7 @@ class DoctorCategory {
   String? iconUrl;
   DoctorCategory(
       {required this.categoryId, this.categoryName, required this.iconUrl});
-  static const String _categoryId = 'id';
+  static const String _categoryId = 'categoryId';
   static const String _categoryName = 'categoryName';
   static const String _iconUrl = 'iconUrl';
 
