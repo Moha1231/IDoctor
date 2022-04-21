@@ -26,13 +26,16 @@ class DoctorService {
           'categoryId': doctorCategory.categoryId,
           'categoryName': doctorCategory.categoryName
         },
-        'doctorBasePrice': 10
+        'doctorBasePrice': 10,
       };
 
       if (isUpdate) {
+        doctorsData['updatedAt'] = FieldValue.serverTimestamp();
         await doctors.doc(DoctorService.doctor!.doctorId).update(doctorsData);
         await getDoctor(forceGet: true);
       } else {
+        doctorsData['createdAt'] = FieldValue.serverTimestamp();
+        doctorsData['updatedAt'] = FieldValue.serverTimestamp();
         var doctor = await doctors.add(doctorsData);
         UserService().setDoctorId(doctor.id);
       }
