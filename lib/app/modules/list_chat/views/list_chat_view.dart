@@ -32,7 +32,7 @@ class ListChatView extends GetView<ListChatController> {
             itemBuilder: (context, index) {
               final room = snapshot.data![index];
 
-              return GestureDetector(
+              return InkWell(
                 onTap: () {
                   Get.toNamed('/chat', arguments: room);
                 },

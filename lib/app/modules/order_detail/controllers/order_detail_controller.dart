@@ -41,7 +41,9 @@ class OrderDetailController extends GetxController {
           .createRoom(orderedTimeslot.timeSlotId!, roomData);
       notificationService.notificationStartAppointment(
           DoctorService.doctor!.doctorName!,
-          orderedTimeslot.bookByWho!.userId!);
+          orderedTimeslot.bookByWho!.userId!,
+          orderedTimeslot.timeSlotId!,
+          token);
       EasyLoading.dismiss();
       Get.toNamed(
         '/video-call',
