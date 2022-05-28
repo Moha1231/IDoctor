@@ -69,7 +69,7 @@ class ProfileView extends GetView<ProfileController> {
           GetBuilder<ProfileController>(
             builder: (_) {
               return Visibility(
-                visible: controller.isAccountActivated,
+                visible: !controller.isAccountActivated,
                 child: Container(
                     height: 30,
                     color: Colors.red[300],
