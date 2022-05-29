@@ -12,7 +12,7 @@ class WithrawFinishView extends GetView<WithrawFinishController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WithrawFinishView'),
+        title: Text('Withraw Finish'.tr),
         centerTitle: true,
       ),
       body: Padding(
@@ -31,7 +31,8 @@ class WithrawFinishView extends GetView<WithrawFinishController> {
               }),
             ),
             Text(
-              'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified',
+              'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified'
+                  .tr,
               textAlign: TextAlign.center,
               style: GoogleFonts.nunito(
                 fontSize: 13,

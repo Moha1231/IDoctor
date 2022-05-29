@@ -15,7 +15,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Confim Withdaw',
+          'Confim Withdaw'.tr,
           style: Styles.appBarTextStyle,
         ),
         centerTitle: true,
@@ -30,7 +30,8 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
           child: Column(
             children: [
               Text(
-                  'please make sure the data below is correct, we will make a withdrawal after you confirm it',
+                  'Please make sure the data below is correct, we will make a withdrawal after you confirm it'
+                      .tr,
                   style: GoogleFonts.nunito(
                       fontSize: 13, color: Styles.greyTextColor)),
               SizedBox(
@@ -58,7 +59,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                         children: [
                           TableRow(children: [
                             SizedBox(
-                                height: 30, child: Text('Withdraw Method')),
+                                height: 30, child: Text('Withdraw Method'.tr)),
                             SizedBox(height: 30, child: Text(': Paypal')),
                           ]),
                           TableRow(children: [
@@ -69,7 +70,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                                     ': ' + controller.withdrawMethod.name!)),
                           ]),
                           TableRow(children: [
-                            SizedBox(height: 40, child: Text('Email')),
+                            SizedBox(height: 40, child: Text('Email'.tr)),
                             SizedBox(
                               height: 40,
                               child: FittedBox(
@@ -81,7 +82,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                           ]),
                           TableRow(children: [
                             SizedBox(
-                                height: 30, child: Text('Amount Withdraw')),
+                                height: 30, child: Text('Amount Withdraw'.tr)),
                             SizedBox(
                               height: 30,
                               child: Text(
@@ -92,7 +93,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                             ),
                           ]),
                           TableRow(children: [
-                            SizedBox(height: 30, child: Text('Admin Fee')),
+                            SizedBox(height: 30, child: Text('Admin Fee'.tr)),
                             SizedBox(
                               height: 30,
                               child: controller.percentageCut != null
@@ -112,7 +113,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                             ),
                           ]),
                           TableRow(children: [
-                            SizedBox(height: 30, child: Text('Tax')),
+                            SizedBox(height: 30, child: Text('Tax'.tr)),
                             SizedBox(
                               height: 30,
                               child: controller.percentageTaxCut != null
@@ -132,7 +133,8 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                             ),
                           ]),
                           TableRow(children: [
-                            SizedBox(height: 30, child: Text('Total Withdraw')),
+                            SizedBox(
+                                height: 30, child: Text('Total Withdraw'.tr)),
                             SizedBox(
                               height: 30,
                               child: controller.total != null
@@ -152,7 +154,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                   onTap: () {
                     controller.toPasswordConfirmation();
                   },
-                  text: 'Withdraw Now')
+                  text: 'Withdraw Now'.tr)
             ],
           ),
         ),

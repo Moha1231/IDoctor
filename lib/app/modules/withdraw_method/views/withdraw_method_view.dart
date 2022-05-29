@@ -15,7 +15,7 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Withdraw Method',
+          'Withdraw Method'.tr,
           style: Styles.appBarTextStyle,
         ),
         centerTitle: true,
@@ -26,7 +26,7 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
           IconButton(
             onPressed: () {
               Get.defaultDialog(
-                  title: "Chose Withdraw Provider",
+                  title: "Chose Withdraw Provider".tr,
                   content: Container(
                     width: 250,
                     height: 50,
@@ -83,7 +83,8 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
             padding: const EdgeInsets.all(20),
             child: Center(
               child: Text(
-                'you don\'t have a withdrawal method, please add one, to withdraw your money',
+                'you don\'t have a withdrawal method, please add one, to withdraw your money'
+                    .tr,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(fontSize: 15),
               ),

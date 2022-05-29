@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
 Widget createAccountLabel(VoidCallback onTap) {
@@ -12,14 +13,14 @@ Widget createAccountLabel(VoidCallback onTap) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'Don\'t have an account ?',
+            'Don\'t have an account ?'.tr,
             style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
           ),
           SizedBox(
             width: 10,
           ),
           Text(
-            'Register',
+            'Register'.tr,
             style: TextStyle(
                 color: Styles.primaryBlueColor,
                 fontSize: 13,

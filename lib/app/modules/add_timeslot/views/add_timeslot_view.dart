@@ -18,29 +18,29 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
         .map(
           (e) => DropdownMenuItem(
             value: e.toString(),
-            child: Text(e.toString() + ' Minute'),
+            child: Text(e.toString() + ' Minute'.tr),
           ),
         )
         .toList();
     List<RepeatTimeslot> listRepeat = [
       controller.repeat,
-      RepeatTimeslot(repeatText: 'Every Day', repeat: Repeat.EVERY_DAY),
+      RepeatTimeslot(repeatText: 'Every Day'.tr, repeat: Repeat.EVERY_DAY),
       RepeatTimeslot(
-          repeatText: 'Same Day Every Week',
+          repeatText: 'Same Day Every Week'.tr,
           repeat: Repeat.SAME_DAY_EVERY_WEEK),
       RepeatTimeslot(
-          repeatText: 'Same Day Every Month',
+          repeatText: 'Same Day Every Month'.tr,
           repeat: Repeat.SAME_DAY_EVERY_MONTH),
     ];
     List<RepeatDuration> listRepeatDuration = [
       controller.repeatDuration,
-      RepeatDuration(month: 3, monthText: '3 Month'),
-      RepeatDuration(month: 6, monthText: '6 Month'),
-      RepeatDuration(month: 12, monthText: '12 Month')
+      RepeatDuration(month: 3, monthText: '3 Month'.tr),
+      RepeatDuration(month: 6, monthText: '6 Month'.tr),
+      RepeatDuration(month: 12, monthText: '12 Month'.tr)
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Timeslot'),
+        title: Text('Add Timeslot'.tr),
         actions: controller.editedTimeSlot == null
             ? [
                 Padding(
@@ -65,12 +65,12 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                 IconButton(
                   onPressed: () {
                     Get.defaultDialog(
-                      title: 'Delete Time Slot',
+                      title: 'Delete Time Slot'.tr,
                       middleText:
-                          'are you sure you want to delete this timeslot',
+                          'are you sure you want to delete this timeslot'.tr,
                       radius: 15,
-                      textCancel: 'Cancel',
-                      textConfirm: 'Delete',
+                      textCancel: 'Cancel'.tr,
+                      textConfirm: 'Delete'.tr,
                       onConfirm: () {
                         controller.deleteTimeSlot();
                       },
@@ -112,7 +112,7 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                   name: 'Price',
                   initialValue: (controller.price ?? '').toString(),
                   decoration: InputDecoration(
-                      hintText: 'Price',
+                      hintText: 'Price'.tr,
                       border: InputBorder.none,
                       prefixIcon: Icon(Icons.attach_money)),
                   validator: FormBuilderValidators.compose([
@@ -171,7 +171,7 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                         dropdownSearchDecoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Icon(Icons.refresh),
-                            label: Text('Repeat Timeslot')),
+                            label: Text('Repeat Timeslot'.tr)),
                         onSaved: (RepeatTimeslot? repeat) {
                           controller.repeat = repeat!;
                         },

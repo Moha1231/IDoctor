@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TransactionTile extends StatelessWidget {
@@ -78,7 +79,7 @@ class TransactionTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Status : ' + status,
+                  'Status : '.tr + status,
                   style: GoogleFonts.nunito(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,

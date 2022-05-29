@@ -20,7 +20,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
         centerTitle: true,
         elevation: 1,
         title: Text(
-          'Order Detail',
+          'Order Detail'.tr,
           style: Styles.appBarTextStyle,
         ),
         leading: IconButton(
@@ -37,7 +37,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               PopupMenuItem<int>(
                 value: 0,
                 child: Text(
-                  "Cancel Appointment",
+                  'Cancel Appointment'.tr,
                 ),
               ),
             ],
@@ -46,9 +46,9 @@ class OrderDetailView extends GetView<OrderDetailController> {
                 {
                   //cancel appointment click
                   Get.defaultDialog(
-                      title: 'Cancel Appointment',
+                      title: 'Cancel Appointment'.tr,
                       content: Text(
-                        'are you sure you want to cancel this appointment',
+                        'are you sure you want to cancel this appointment'.tr,
                         textAlign: TextAlign.center,
                       ),
                       onCancel: () {},
@@ -60,13 +60,15 @@ class OrderDetailView extends GetView<OrderDetailController> {
                         if (controller.orderedTimeslot.status == 'refund') {
                           Fluttertoast.showToast(
                               msg:
-                                  'the appointment has been previously canceled');
+                                  'the appointment has been previously canceled'
+                                      .tr);
                           Get.back();
                         }
                         if (controller.orderedTimeslot.status == 'complete') {
                           Fluttertoast.showToast(
                               msg:
-                                  'The meeting has started and can\'t be canceled anymore');
+                                  'The meeting has started and can\'t be canceled anymore'
+                                      .tr);
                           Get.back();
                         }
                       })
@@ -84,7 +86,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
-                  'Appointment With',
+                  'Appointment with'.tr,
                   style: Styles.appointmentDetailTextStyle,
                 ),
               ),
@@ -101,7 +103,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
-                  'Appointment Detail',
+                  'Appointment Detail'.tr,
                   style: Styles.appointmentDetailTextStyle,
                 ),
               ),
@@ -127,7 +129,8 @@ class OrderDetailView extends GetView<OrderDetailController> {
                     Table(
                       children: [
                         TableRow(children: [
-                          SizedBox(height: 50, child: Text('Appointment Time')),
+                          SizedBox(
+                              height: 50, child: Text('Appointment Time'.tr)),
                           SizedBox(
                             height: 50,
                             child: Text(TimeFormat().formatDate(
@@ -137,7 +140,8 @@ class OrderDetailView extends GetView<OrderDetailController> {
                         controller.isReschedule
                             ? TableRow(children: [
                                 SizedBox(
-                                    height: 50, child: Text('Reschedule From')),
+                                    height: 50,
+                                    child: Text('Reschedule From'.tr)),
                                 SizedBox(
                                   height: 50,
                                   child: Text(TimeFormat().formatDate(controller
@@ -148,27 +152,27 @@ class OrderDetailView extends GetView<OrderDetailController> {
                                 children: [SizedBox(), SizedBox()],
                               ),
                         TableRow(children: [
-                          SizedBox(height: 50, child: Text('Duration')),
+                          SizedBox(height: 50, child: Text('Duration'.tr)),
                           SizedBox(
                               height: 50,
                               child: Text(': ' +
                                   controller.orderedTimeslot.duration
                                       .toString() +
-                                  ' Minute')),
+                                  ' Minute'.tr)),
                         ]),
                         TableRow(children: [
-                          SizedBox(height: 50, child: Text('Price')),
+                          SizedBox(height: 50, child: Text('Price'.tr)),
                           SizedBox(
                             height: 50,
                             child: Text(
                               currencySign +
                                   controller.orderedTimeslot.price.toString() +
-                                  ' (Paid)',
+                                  ' (Paid)'.tr,
                             ),
                           ),
                         ]),
                         TableRow(children: [
-                          SizedBox(height: 50, child: Text('Status')),
+                          SizedBox(height: 50, child: Text('Status'.tr)),
                           SizedBox(
                             height: 50,
                             child: Text(
@@ -184,7 +188,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
-                  'Countdown',
+                  'Countdown'.tr,
                   style: Styles.appointmentDetailTextStyle,
                 ),
               ),
@@ -209,22 +213,24 @@ class OrderDetailView extends GetView<OrderDetailController> {
                   active: controller.active.value,
                   onTap: () {
                     Get.defaultDialog(
-                        title: 'Start Appointment',
+                        title: 'Start Appointment'.tr,
                         content: Text(
-                            'are you sure you want to start the virtual meeting now, the user will be sent a notification that you have started the meeting'),
-                        textCancel: 'Cancel',
-                        textConfirm: "Start Appointment",
+                            'are you sure you want to start the virtual meeting now, the user will be sent a notification that you have started the meeting'
+                                .tr),
+                        textCancel: 'Cancel'.tr,
+                        textConfirm: 'Start Appointment'.tr,
                         onConfirm: () {
                           Get.back();
                           controller.videoCall();
                         });
                   },
-                  text: 'Start Appointment')),
+                  text: 'Start Appointment'.tr)),
               SizedBox(
                 height: 10,
               ),
               Text(
-                'You can still start a video call appointment, even before the schedule',
+                'You can still start a video call appointment, even before the schedule'
+                    .tr,
                 style: Styles.greyTextInfoStyle,
               )
             ],

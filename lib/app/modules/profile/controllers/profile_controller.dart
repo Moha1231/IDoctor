@@ -50,11 +50,11 @@ class ProfileController extends GetxController {
 
   void logout() async {
     Get.defaultDialog(
-      title: 'Logout',
-      middleText: 'are you sure you want to Logout',
+      title: 'Logout'.tr,
+      middleText: 'Are you sure you want to Logout'.tr,
       radius: 15,
-      textCancel: 'Cancel',
-      textConfirm: 'Logout',
+      textCancel: 'Cancel'.tr,
+      textConfirm: 'Logout'.tr,
       onConfirm: () {
         AuthService().logout();
         Get.offAllNamed('/login');

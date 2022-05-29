@@ -13,7 +13,7 @@ class ChatView extends GetView<ChatController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat', style: Styles.appBarTextStyle),
+        title: Text('Chat'.tr, style: Styles.appBarTextStyle),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -64,9 +64,9 @@ class ChatView extends GetView<ChatController> {
                     Navigator.pop(context);
                     controller.handleImageSelection();
                   },
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Photo'),
+                    child: Text('Photo'.tr),
                   ),
                 ),
                 TextButton(
@@ -74,16 +74,16 @@ class ChatView extends GetView<ChatController> {
                     Navigator.pop(context);
                     controller.handleFileSelection();
                   },
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('File'),
+                    child: Text('File'.tr),
                   ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Cancel'),
+                    child: Text('Cancel'.tr),
                   ),
                 ),
               ],

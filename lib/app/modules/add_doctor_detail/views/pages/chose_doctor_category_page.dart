@@ -9,7 +9,7 @@ class ChoseDoctorCategoryPage extends GetView<AddDoctorDetailController> {
     controller.initDoctorCategory();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Category'),
+        title: Text('Doctor Category'.tr),
         centerTitle: true,
         automaticallyImplyLeading: false,
         actions: [

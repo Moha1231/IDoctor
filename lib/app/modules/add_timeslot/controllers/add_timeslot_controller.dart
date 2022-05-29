@@ -22,9 +22,9 @@ class AddTimeslotController extends GetxController {
   final formKey = GlobalKey<FormBuilderState>();
   AppointmentController appointController = Get.find();
   RepeatTimeslot repeat =
-      RepeatTimeslot(repeatText: 'Not Repeat', repeat: Repeat.NOT_REPEAT);
+      RepeatTimeslot(repeatText: 'Not Repeat'.tr, repeat: Repeat.NOT_REPEAT);
   RepeatDuration repeatDuration =
-      RepeatDuration(month: 1, monthText: '1 Month'); // month
+      RepeatDuration(month: 1, monthText: '1 Month'.tr); // month
   var repeatDurationVisibility = false.obs;
   var isRepeatedTimeslot = false;
   bool isEditMode = false;
@@ -52,7 +52,7 @@ class AddTimeslotController extends GetxController {
   void addTimeslot() async {
     try {
       if (newDateTime.compareTo(DateTime.now()) < 0) {
-        Fluttertoast.showToast(msg: 'date time is in the past');
+        Fluttertoast.showToast(msg: 'Date Time is in the past'.tr);
         return;
       }
       final validationSuccess = formKey.currentState!.validate();
@@ -66,7 +66,7 @@ class AddTimeslotController extends GetxController {
         } else {
           await addOneTimeSlot();
         }
-        Fluttertoast.showToast(msg: 'Success adding Timeslot');
+        Fluttertoast.showToast(msg: 'Success adding Timeslot'.tr);
         appointController.updateEventsCalendar();
         Get.back();
       }
@@ -77,7 +77,7 @@ class AddTimeslotController extends GetxController {
 
   void editTimeSlot() async {
     if (newDateTime.compareTo(DateTime.now()) < 0) {
-      Fluttertoast.showToast(msg: 'date time is in the past');
+      Fluttertoast.showToast(msg: 'Date Time is in the past'.tr);
       return;
     }
     final validationSuccess = formKey.currentState!.validate();
@@ -85,12 +85,13 @@ class AddTimeslotController extends GetxController {
       formKey.currentState!.save();
       if (isRepeatedTimeslot) {
         bool? result = await Get.defaultDialog(
-            title: 'Edit Linked TimeSlot',
+            title: 'Edit Linked TimeSlot'.tr,
             middleText:
-                'This timeslot is connected to several timeslots that were previously created together, do you also want to edit all timeslots that are connected to this timeslot',
+                'This timeslot is connected to several timeslots that were previously created together, do you also want to edit all timeslots that are connected to this timeslot'
+                    .tr,
             radius: 15,
-            textCancel: 'Edit Only this Timeslot',
-            textConfirm: 'Edit All Connected Timeslot',
+            textCancel: 'Edit Only this Timeslot'.tr,
+            textConfirm: 'Edit All Connected Timeslot'.tr,
             onConfirm: () {
               Get.back(result: true);
             },
@@ -104,7 +105,7 @@ class AddTimeslotController extends GetxController {
           TimeSlotService()
               .updateRepeatedTimeSlot(editedTimeSlot!)
               .then((value) {
-            Fluttertoast.showToast(msg: 'success editing timeslot');
+            Fluttertoast.showToast(msg: 'Success editing timeslot'.tr);
             appointController.updateEventsCalendar();
             Get.back(closeOverlays: true);
           });
@@ -113,7 +114,7 @@ class AddTimeslotController extends GetxController {
           editedTimeSlot!.price = price;
           editedTimeSlot!.duration = duration;
           TimeSlotService().updateTimeSlot(editedTimeSlot!).then((value) {
-            Fluttertoast.showToast(msg: 'success editing timeslot');
+            Fluttertoast.showToast(msg: 'Success editing timeslot'.tr);
             appointController.updateEventsCalendar();
             Get.back(closeOverlays: true);
           });
@@ -123,7 +124,7 @@ class AddTimeslotController extends GetxController {
         editedTimeSlot!.price = price;
         editedTimeSlot!.duration = duration;
         TimeSlotService().updateTimeSlot(editedTimeSlot!).then((value) {
-          Fluttertoast.showToast(msg: 'success editing timeslot');
+          Fluttertoast.showToast(msg: 'Success editing timeslot'.tr);
           appointController.updateEventsCalendar();
           Get.back(closeOverlays: true);
         });
@@ -164,12 +165,13 @@ class AddTimeslotController extends GetxController {
   Future deleteTimeSlot() async {
     if (isRepeatedTimeslot) {
       bool? result = await Get.defaultDialog(
-          title: 'Delete Linked TimeSlot',
+          title: 'Delete Linked TimeSlot'.tr,
           middleText:
-              'This timeslot is connected to several timeslots that were previously created simultaneously, do you also want to delete all timeslots that are connected to this timeslot',
+              'This timeslot is connected to several timeslots that were previously created simultaneously, do you also want to delete all timeslots that are connected to this timeslot'
+                  .tr,
           radius: 15,
-          textCancel: 'Cancel',
-          textConfirm: 'Delete',
+          textCancel: 'Cancel'.tr,
+          textConfirm: 'Delete'.tr,
           onConfirm: () {
             Get.back(result: true);
           },
@@ -189,7 +191,7 @@ class AddTimeslotController extends GetxController {
 
   Future deleteRepeatedTimeslot() async {
     TimeSlotService().deleteRepeatedTimeSlot(editedTimeSlot!).then((value) {
-      Fluttertoast.showToast(msg: 'success delete timeslot');
+      Fluttertoast.showToast(msg: 'Success delete timeslot'.tr);
       appointController.updateEventsCalendar();
       Get.back(closeOverlays: true);
     });
@@ -197,7 +199,7 @@ class AddTimeslotController extends GetxController {
 
   Future deleteOneTimeSlot() async {
     TimeSlotService().deleteTimeSlot(editedTimeSlot!).then((value) {
-      Fluttertoast.showToast(msg: 'success delete timeslot');
+      Fluttertoast.showToast(msg: 'Success delete timeslot'.tr);
       appointController.updateEventsCalendar();
       Get.back(closeOverlays: true);
     });

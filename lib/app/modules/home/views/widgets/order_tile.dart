@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/timeformat.dart';
@@ -66,7 +67,7 @@ class OrderTile extends StatelessWidget {
                 ),
                 FittedBox(
                   child: Text(
-                    'Order at : ' +
+                    'Order at : '.tr +
                         TimeFormat().formatDate(dateOrder.toLocal()),
                     style: GoogleFonts.nunito(
                         fontWeight: FontWeight.w700, color: Colors.grey),

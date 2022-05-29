@@ -18,7 +18,7 @@ class UpdateEmailPage extends GetView<EditProfileController> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Update Email',
+            'Update Email'.tr,
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -31,7 +31,7 @@ class UpdateEmailPage extends GetView<EditProfileController> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "What's Your New Email Address?",
+                'What\'s Your New Email Address?'.tr,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -45,7 +45,8 @@ class UpdateEmailPage extends GetView<EditProfileController> {
                       FormBuilderValidators.required(context),
                       FormBuilderValidators.email(context)
                     ]),
-                    decoration: InputDecoration(labelText: 'New Email Address'),
+                    decoration:
+                        InputDecoration(labelText: 'New Email Address'.tr),
                     name: 'email',
                     keyboardType: TextInputType.emailAddress,
                   )),
@@ -61,7 +62,7 @@ class UpdateEmailPage extends GetView<EditProfileController> {
                         print("validation failed");
                       }
                     },
-                    text: 'Save'),
+                    text: 'Save'.tr),
               )
             ],
           ),

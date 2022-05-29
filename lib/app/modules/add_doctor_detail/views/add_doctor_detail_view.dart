@@ -13,7 +13,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
     final node = FocusScope.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Doctor Information'),
+        title: Text('Add Doctor Information'.tr),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -37,7 +37,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                   },
                   validator: ((value) {
                     if (value!.length < 3) {
-                      return 'Name must be more than two characters';
+                      return 'Name must be more than two characters'.tr;
                     } else {
                       return null;
                     }
@@ -50,7 +50,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                   },
                   decoration: InputDecoration(
                       hintText: controller.doctor == null
-                          ? 'Doctor Name e.g : Dr. Maria Alexandra'
+                          ? 'Doctor Name e.g : Dr. Maria Alexandra'.tr
                           : '',
                       border: OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
@@ -70,7 +70,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                   },
                   decoration: InputDecoration(
                       hintText: controller.doctor == null
-                          ? 'the Hospital, where you work'
+                          ? 'the Hospital, where you work'.tr
                           : null,
                       border: OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
@@ -90,8 +90,9 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                       ? null
                       : controller.shortBiography.value,
                   decoration: InputDecoration(
-                      hintText:
-                          controller.doctor == null ? 'Short Biography' : null,
+                      hintText: controller.doctor == null
+                          ? 'Short Biography'.tr
+                          : null,
                       border: OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
@@ -113,7 +114,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                       SizedBox(width: 20),
                       Expanded(
                           child: Text(controller.doctorCategory == null
-                              ? 'Chose Doctor Category'
+                              ? 'Chose Doctor Category'.tr
                               : controller.doctorCategory!.categoryName!)),
                       Icon(Icons.arrow_forward_ios),
                     ],
@@ -126,7 +127,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                     onTap: () {
                       controller.saveDoctorDetail();
                     },
-                    text: 'Save')
+                    text: 'Save'.tr)
               ],
             ),
           ),

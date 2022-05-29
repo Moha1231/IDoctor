@@ -35,13 +35,13 @@ class HomeView extends GetView<HomeController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text('Hello ' + controller.username.value,
+                          Text('Hello '.tr + controller.username.value,
                               style: GoogleFonts.nunito(
                                   fontSize: 18,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                           Text(
-                            'Welcome Back!',
+                            'Welcome Back!'.tr,
                             style: GoogleFonts.nunito(
                                 fontSize: 14, color: Styles.greyTextColor),
                           )
@@ -49,7 +49,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       Spacer(),
                       Text(
-                        'Doctor App',
+                        'Doctor App'.tr,
                         style: GoogleFonts.nunito(
                             fontSize: 15, fontWeight: FontWeight.w800),
                       )
@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
                     Column(
                       children: [
                         Text(
-                          'Current Balance',
+                          'Current Balance'.tr,
                           style: GoogleFonts.inter(
                               fontSize: 15, fontWeight: FontWeight.w400),
                         ),
@@ -102,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                     Column(
                       children: [
                         Text(
-                          'Appointment made',
+                          'Appointment made'.tr,
                           style: GoogleFonts.inter(
                               fontSize: 15, fontWeight: FontWeight.w400),
                         ),
@@ -118,7 +118,7 @@ class HomeView extends GetView<HomeController> {
                           height: 10,
                         ),
                         Text(
-                          'this month',
+                          'this month'.tr,
                           style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -132,7 +132,10 @@ class HomeView extends GetView<HomeController> {
               SizedBox(
                 height: 15,
               ),
-              SectionTitle(title: 'Upcoming Appointment'),
+              SectionTitle(
+                title: 'Upcoming Appointment'.tr,
+                subTitle: 'See More'.tr,
+              ),
               Container(
                   height: 200,
                   child: dahsboardData.listAppointment!.isNotEmpty
@@ -147,15 +150,18 @@ class HomeView extends GetView<HomeController> {
                                 .listAppointment![index].purchaseTime!,
                           ),
                         )
-                      : EmptyList(msg: 'no order')),
-              SectionTitle(title: 'Review'),
+                      : EmptyList(msg: 'no order'.tr)),
+              SectionTitle(
+                title: 'Review'.tr,
+                subTitle: 'See More'.tr,
+              ),
               Container(
                   height: 200,
                   child: dahsboardData.listReview!.isNotEmpty
                       ? ListView.builder(
                           itemCount: dahsboardData.listAppointment!.length,
                           itemBuilder: (contex, index) => ListTile())
-                      : EmptyList(msg: 'no review')),
+                      : EmptyList(msg: 'no review'.tr)),
             ],
           ),
         ),

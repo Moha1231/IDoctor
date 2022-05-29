@@ -22,7 +22,7 @@ class RegisterController extends GetxController {
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
       EasyLoading.show(
-          status: 'loading...', maskType: EasyLoadingMaskType.black);
+          status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
       AuthService().regiterNewUser(username, email, password).then((value) {
         Get.offAllNamed('/add-doctor-detail');
       }).onError((error, stackTrace) {

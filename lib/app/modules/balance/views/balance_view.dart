@@ -19,7 +19,7 @@ class BalanceView extends GetView<BalanceController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Balance',
+          'Balance'.tr,
           style: Styles.appBarTextStyle,
         ),
         centerTitle: true,
@@ -50,7 +50,7 @@ class BalanceView extends GetView<BalanceController> {
                 child: Column(
                   children: [
                     Text(
-                      'Current Balance',
+                      'Current Balance'.tr,
                       style: GoogleFonts.inter(
                           fontSize: 15, fontWeight: FontWeight.w400),
                     ),
@@ -68,7 +68,7 @@ class BalanceView extends GetView<BalanceController> {
                     Container(
                       width: 150,
                       child: ElevatedButton(
-                        child: Text("Withdraw"),
+                        child: Text("Withdraw".tr),
                         onPressed: () => controller.withdraw(),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.blue,
@@ -86,8 +86,8 @@ class BalanceView extends GetView<BalanceController> {
                 height: 20,
               ),
               SectionTitle(
-                title: 'Last Transaction',
-                subTitle: 'See all transaction',
+                title: 'Last Transaction'.tr,
+                subTitle: 'See all transaction'.tr,
               ),
               SizedBox(
                 height: 15,
@@ -140,7 +140,7 @@ class BalanceView extends GetView<BalanceController> {
                               );
                             },
                           ),
-                      onEmpty: EmptyList(msg: 'no transaction yet')),
+                      onEmpty: EmptyList(msg: 'No Transaction yet'.tr)),
                 ),
               ),
             ],

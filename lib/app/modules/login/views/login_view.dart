@@ -38,7 +38,7 @@ class LoginView extends GetView<LoginController> {
                           },
                           validator: ((value) {
                             if (value!.length < 3) {
-                              return 'name must be more than two characters';
+                              return 'Name must be more than two characters'.tr;
                             } else {
                               return null;
                             }
@@ -47,7 +47,7 @@ class LoginView extends GetView<LoginController> {
                             controller.username = username ?? '';
                           },
                           decoration: InputDecoration(
-                              hintText: 'Username or Email',
+                              hintText: 'Username or Email'.tr,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide(
@@ -63,7 +63,7 @@ class LoginView extends GetView<LoginController> {
                             obscureText: controller.passwordVisible,
                             textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
-                                hintText: 'Password',
+                                hintText: 'Password'.tr,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                     borderSide: BorderSide(
@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                                 )),
                             validator: ((value) {
                               if (value!.isEmpty) {
-                                return 'Password cannot be empty';
+                                return 'Password cannot be empty'.tr;
                               } else {
                                 return null;
                               }
@@ -104,7 +104,7 @@ class LoginView extends GetView<LoginController> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       alignment: Alignment.centerRight,
-                      child: Text('Forgot Password ?',
+                      child: Text('Forgot Password ?'.tr,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w500)),
                     ),
@@ -115,7 +115,7 @@ class LoginView extends GetView<LoginController> {
                       onTap: () {
                         controller.login();
                       },
-                      text: 'Login'),
+                      text: 'Login'.tr),
                   SizedBox(height: 20),
                   createAccountLabel(() {
                     Get.toNamed('/register');

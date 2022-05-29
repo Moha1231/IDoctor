@@ -15,7 +15,7 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Account',
+          'Account'.tr,
           style: Styles.appBarTextStyle,
         ),
         centerTitle: true,
@@ -79,7 +79,7 @@ class ProfileView extends GetView<ProfileController> {
                           width: 10,
                         ),
                         Text(
-                          'Your account is still not activated',
+                          'Your account is still not activated'.tr,
                           style: TextStyle(color: Colors.white),
                         )
                       ],
@@ -95,21 +95,21 @@ class ProfileView extends GetView<ProfileController> {
               controller.toEditProfile();
             },
             icon: Icons.person,
-            text: 'Edit Account',
+            text: 'Edit Account'.tr,
           ),
           ProfileButton(
             onTap: () {
               controller.toEditDoctorDetail();
             },
             icon: Icons.edit,
-            text: 'Edit Doctor Data',
+            text: 'Edit Doctor Data'.tr,
           ),
           ProfileButton(
             onTap: () {
               controller.toBalance();
             },
             icon: Icons.account_balance_wallet_rounded,
-            text: 'Balance',
+            text: 'Balance'.tr,
           ),
           SizedBox(
             height: 20,
@@ -119,7 +119,7 @@ class ProfileView extends GetView<ProfileController> {
               controller.logout();
             },
             icon: Icons.logout_outlined,
-            text: 'Logout',
+            text: 'Logout'.tr,
             hideArrowIcon: true,
           ),
           //test button, you can delete it

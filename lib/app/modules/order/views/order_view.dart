@@ -13,7 +13,7 @@ class OrderView extends GetView<OrderController> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Appointment',
+            'Appointment'.tr,
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -39,10 +39,10 @@ class OrderView extends GetView<OrderController> {
                                 listOrder[index].bookByWho!.photoUrl!)
                             : AssetImage('assets/images/default-profile.png')
                                 as ImageProvider),
-                    title: Text('Appointment with ' +
+                    title: Text('Appointment with '.tr +
                         listOrder[index].bookByWho!.displayName!),
                     subtitle: Text(
-                      'at ' +
+                      'at '.tr +
                           DateFormat('EEEE, dd, MMMM')
                               .format(listOrder[index].purchaseTime!),
                     ),
@@ -54,7 +54,7 @@ class OrderView extends GetView<OrderController> {
                 );
               },
             ),
-            onEmpty: Center(child: EmptyList(msg: 'no order')),
+            onEmpty: Center(child: EmptyList(msg: 'no order'.tr)),
           ),
         ));
   }

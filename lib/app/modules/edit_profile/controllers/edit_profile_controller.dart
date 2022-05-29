@@ -39,7 +39,7 @@ class EditProfileController extends GetxController {
       currentPassword = '';
       newPassword = '';
       Get.back();
-      Fluttertoast.showToast(msg: 'Successfully change password');
+      Fluttertoast.showToast(msg: 'Successfully change password'.tr);
     } catch (err) {
       Fluttertoast.showToast(msg: err.toString());
     }

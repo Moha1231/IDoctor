@@ -13,6 +13,7 @@ import 'app/routes/app_pages.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'app/services/firebase_service.dart';
+import 'app/utils/localization.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,26 +30,24 @@ Future main() async {
   ]);
   runApp(
     GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Application",
-      initialRoute: isUserLogin ? AppPages.dashboard : AppPages.login,
-      getPages: AppPages.routes,
-      builder: EasyLoading.init(),
-      supportedLocales: [
-        Locale('en'),
-      ],
-      localizationsDelegates: [
-        FormBuilderLocalizations.delegate,
-      ],
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          elevation: 2,
-          color: Colors.white,
-          iconTheme: IconThemeData(
-              color: Colors
-                  .black), // set backbutton color here which will reflect in all screens.
+        debugShowCheckedModeBanner: false,
+        title: "Application",
+        initialRoute: isUserLogin ? AppPages.dashboard : AppPages.login,
+        getPages: AppPages.routes,
+        builder: EasyLoading.init(),
+        localizationsDelegates: [
+          FormBuilderLocalizations.delegate,
+        ],
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            elevation: 2,
+            color: Colors.white,
+            iconTheme: IconThemeData(
+                color: Colors
+                    .black), // set backbutton color here which will reflect in all screens.
+          ),
         ),
-      ),
-    ),
+        locale: LocalizationService.locale,
+        translations: LocalizationService()),
   );
 }

@@ -20,7 +20,7 @@ class AppointmentView extends GetView<AppointmentController> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Appointment',
+            'Appointment'.tr,
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -106,15 +106,15 @@ class AppointmentView extends GetView<AppointmentController> {
                         child: ListTile(
                           title: _.eventSelectedDay[index].available == true
                               ? Text(
-                                  "Time Slot at " +
+                                  "Time Slot at ".tr +
                                       DateFormat("hh:mm a").format(
                                           _.eventSelectedDay[index].timeSlot!),
                                 )
                               : Text(
-                                  "Time Slot at " +
+                                  "Time Slot at ".tr +
                                       DateFormat("hh:mm a").format(
                                           _.eventSelectedDay[index].timeSlot!) +
-                                      ' has been Ordered',
+                                      ' has been Ordered'.tr,
                                 ),
                           subtitle: Text(
                             DateFormat("EEEE, dd MMMM, yyyy")
@@ -156,7 +156,7 @@ class AppointmentView extends GetView<AppointmentController> {
               {'date': controller.selectedDay.value}
             ]);
           },
-          label: Text('Add Timeslot'),
+          label: Text('Add Timeslot'.tr),
           icon: Icon(Icons.add),
         ));
   }

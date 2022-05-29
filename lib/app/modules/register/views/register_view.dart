@@ -39,7 +39,7 @@ class RegisterView extends GetView<RegisterController> {
                       },
                       validator: ((value) {
                         if (value!.length < 3) {
-                          return 'name must be more than two characters';
+                          return 'Name must be more than two characters'.tr;
                         } else {
                           return null;
                         }
@@ -48,7 +48,7 @@ class RegisterView extends GetView<RegisterController> {
                         controller.username = username!;
                       },
                       decoration: InputDecoration(
-                          hintText: 'Username',
+                          hintText: 'Username'.tr,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -73,7 +73,7 @@ class RegisterView extends GetView<RegisterController> {
                         controller.email = email!;
                       },
                       decoration: InputDecoration(
-                          hintText: 'Email',
+                          hintText: 'Email'.tr,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -95,7 +95,8 @@ class RegisterView extends GetView<RegisterController> {
                               },
                               validator: ((value) {
                                 if (value!.length < 3) {
-                                  return 'Password must be more thand four characters';
+                                  return 'Password must be more thand four characters'
+                                      .tr;
                                 } else {
                                   return null;
                                 }
@@ -104,7 +105,7 @@ class RegisterView extends GetView<RegisterController> {
                                 controller.password = password!;
                               },
                               decoration: InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: 'Password'.tr,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                       borderSide: BorderSide(
@@ -131,7 +132,7 @@ class RegisterView extends GetView<RegisterController> {
                         onTap: () {
                           controller.signUpUser();
                         },
-                        text: 'Register Now'),
+                        text: 'Register Now'.tr),
                     SizedBox(height: height * .01),
                     divider(),
                     //_googleSignInButton(controller.loginController),

@@ -11,7 +11,7 @@ class ListChatView extends GetView<ListChatController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat', style: TextStyle(color: Colors.black)),
+        title: Text('Chat'.tr, style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: StreamBuilder<List<types.Room>>(

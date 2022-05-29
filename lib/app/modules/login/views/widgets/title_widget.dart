@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
 Widget titleApp() {
@@ -16,14 +17,14 @@ Widget titleApp() {
       RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-            text: 'Doctor',
+            text: 'Doctor'.tr,
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
                 color: Styles.secondaryBlueColor),
             children: [
               TextSpan(
-                text: ' App',
+                text: ' App'.tr,
                 style: TextStyle(color: Colors.black, fontSize: 30),
               ),
             ]),

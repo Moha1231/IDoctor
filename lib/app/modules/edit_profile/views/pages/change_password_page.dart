@@ -19,7 +19,7 @@ class ChangePasswordPage extends GetView<EditProfileController> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Change Password',
+            'Change Password'.tr,
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -41,7 +41,7 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                           FormBuilderValidators.minLength(context, 3)
                         ]),
                         decoration:
-                            InputDecoration(labelText: 'Curren Password'),
+                            InputDecoration(labelText: 'Curren Password'.tr),
                         name: 'currentPassword',
                         keyboardType: TextInputType.visiblePassword,
                         onEditingComplete: () => node.nextFocus(),
@@ -55,7 +55,8 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                           FormBuilderValidators.required(context),
                           FormBuilderValidators.minLength(context, 3)
                         ]),
-                        decoration: InputDecoration(labelText: 'New Password'),
+                        decoration:
+                            InputDecoration(labelText: 'New Password'.tr),
                         name: 'newPassword',
                         keyboardType: TextInputType.visiblePassword,
                         onSaved: (value) =>
@@ -76,7 +77,7 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                             FormBuilderValidators.minLength(context, 3)
                           ]),
                           decoration: InputDecoration(
-                              labelText: 'Confirm New Password'),
+                              labelText: 'Confirm New Password'.tr),
                           name: 'confirmNewPassword',
                           keyboardType: TextInputType.visiblePassword,
                           onEditingComplete: () {
@@ -109,7 +110,7 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                               print("validation failed");
                             }
                           },
-                          text: 'Save'),
+                          text: 'Save'.tr),
                     )
                   ],
                 )),

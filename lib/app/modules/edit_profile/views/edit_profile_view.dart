@@ -12,7 +12,7 @@ class EditProfileView extends GetView<EditProfileController> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Edit Account',
+            'Edit Account'.tr,
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -22,14 +22,14 @@ class EditProfileView extends GetView<EditProfileController> {
             builder: (controller) => Column(
               children: [
                 EditProfileTile(
-                  title: 'Username',
+                  title: 'Username'.tr,
                   subtitle: controller.username.value,
                 ),
                 Divider(
                   height: 0,
                 ),
                 EditProfileTile(
-                  title: 'Email',
+                  title: 'Email'.tr,
                   subtitle: controller.email.value,
                   onTap: () {
                     controller.toUpdateEmail();
@@ -39,7 +39,7 @@ class EditProfileView extends GetView<EditProfileController> {
                   height: 0,
                 ),
                 EditProfileTile(
-                  title: 'Password',
+                  title: 'Password'.tr,
                   subtitle: controller.password,
                   onTap: () {
                     controller.toChangePassword();

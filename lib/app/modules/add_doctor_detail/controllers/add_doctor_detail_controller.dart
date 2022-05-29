@@ -71,17 +71,17 @@ class AddDoctorDetailController extends GetxController
 
   void saveDoctorDetail() async {
     if (profilePicUrl.value.isEmpty) {
-      exceptionToast('Please choose your profile photo');
+      exceptionToast('Please choose your profile photo'.tr);
       return;
     }
     if (doctorCategory == null) {
-      exceptionToast('Please chose doctor Specialty or Category');
+      exceptionToast('Please chose doctor Specialty or Category'.tr);
       return;
     }
     if (formkey.currentState!.validate() && doctorCategory != null) {
       formkey.currentState!.save();
       EasyLoading.show(
-          status: 'loading...', maskType: EasyLoadingMaskType.black);
+          status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
       try {
         await DoctorService().saveDoctorDetail(
             doctorName: doctorName.value,
