@@ -8,6 +8,7 @@ import 'package:hallo_doctor_doctor_app/app/models/repeat_duration_model.dart';
 import 'package:hallo_doctor_doctor_app/app/models/repeat_model.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/appointment/controllers/appointment_controller.dart';
+import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -212,6 +213,9 @@ class AddTimeslotController extends GetxController {
         duration: duration!,
         available: available,
         isParentTimeslot: isParent);
+    if (price! < DoctorService.doctor!.doctorPrice!) {
+      await DoctorService().updateDoctorBasePrice(price!);
+    }
     return timeSlotId;
   }
 
@@ -224,5 +228,8 @@ class AddTimeslotController extends GetxController {
         available: available,
         repeatTimeslot: listRepeatTimeslot,
         parentTimeslotId: parentTimeslotId);
+    if (price! < DoctorService.doctor!.doctorPrice!) {
+      await DoctorService().updateDoctorBasePrice(price!);
+    }
   }
 }

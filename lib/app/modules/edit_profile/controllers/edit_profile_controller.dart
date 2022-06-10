@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/change_base_price.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/change_password_page.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/update_email_page.dart';
+import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
 
@@ -13,11 +16,21 @@ class EditProfileController extends GetxController {
   var email = UserService().currentUser!.displayName.obs;
   final password = '******';
   var newPassword = ''.obs;
+  var basePrice = 0.obs;
+  TextEditingController textEditingBasePriceController =
+      TextEditingController(text: DoctorService.doctor!.doctorPrice.toString());
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    basePrice.value = DoctorService.doctor!.doctorPrice!;
+  }
 
   @override
   void onClose() {}
   toUpdateEmail() => Get.to(() => UpdateEmailPage());
   toChangePassword() => Get.to(() => ChangePasswordPage());
+  toChangeBasePrice() => Get.to(() => ChangeBasePrice());
 
   void updateEmail(String email) {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
@@ -44,5 +57,20 @@ class EditProfileController extends GetxController {
       Fluttertoast.showToast(msg: err.toString());
     }
     EasyLoading.dismiss();
+  }
+
+  Future saveBasePrice() async {
+    try {
+      int newBasePrice = int.parse(textEditingBasePriceController.text);
+      EasyLoading.show(maskType: EasyLoadingMaskType.black);
+      await DoctorService().updateDoctorBasePrice(newBasePrice);
+      basePrice.value = newBasePrice;
+      update();
+      Get.back();
+    } catch (e) {
+      return Future.error(e.toString());
+    } finally {
+      EasyLoading.dismiss();
+    }
   }
 }

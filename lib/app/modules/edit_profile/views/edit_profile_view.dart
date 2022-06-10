@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 
 import '../controllers/edit_profile_controller.dart';
 import 'widgets/edit_profile_tile.dart';
@@ -19,6 +20,7 @@ class EditProfileView extends GetView<EditProfileController> {
         ),
         body: Container(
           child: GetX<EditProfileController>(
+            init: Get.find<EditProfileController>(),
             builder: (controller) => Column(
               children: [
                 EditProfileTile(
@@ -45,6 +47,15 @@ class EditProfileView extends GetView<EditProfileController> {
                     controller.toChangePassword();
                   },
                 ),
+                Obx(() => EditProfileTile(
+                      title: 'Base Price'.tr,
+                      subtitle: currencySign +
+                          ' ' +
+                          controller.basePrice.value.toString(),
+                      onTap: () {
+                        controller.toChangeBasePrice();
+                      },
+                    )),
               ],
             ),
           ),

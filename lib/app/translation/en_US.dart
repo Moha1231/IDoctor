@@ -147,5 +147,7 @@ const Map<String, String> en = {
   'Withraw Finish': 'Withraw Finish',
   'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified':
       'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified',
-  'OK': 'OK'
+  'OK': 'OK',
+  'Base Price': 'Base Price',
+  'Change Base Price': 'Change Base Price'
 };

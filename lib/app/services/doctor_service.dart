@@ -71,4 +71,16 @@ class DoctorService {
       return null;
     }
   }
+
+  Future updateDoctorBasePrice(int basePrice) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Doctors')
+          .doc(doctor!.doctorId)
+          .update({'doctorBasePrice': basePrice});
+      doctor!.doctorPrice = basePrice;
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
 }
