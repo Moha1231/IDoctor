@@ -20,7 +20,7 @@ dependencies:
   flutter_svg: ^1.0.1
   get_storage: ^2.0.3
   table_calendar: ^3.0.3
-  flutter_form_builder: ^7.0.0
+  flutter_form_builder: 7.0.0
   form_builder_validators: ^7.2.0
   cached_network_image: ^3.2.0
   string_validator: ^0.3.0
@@ -50,7 +50,7 @@ dependencies:
   dropdown_search: ^2.0.1
   json_serializable: ^6.1.5
   json_annotation: ^4.4.0
-  agora_rtc_engine: ^5.1.0
+  agora_rtc_engine: ^5.2.0
   permission_handler: ^9.2.0
   image_cropper: ^2.0.3
 
