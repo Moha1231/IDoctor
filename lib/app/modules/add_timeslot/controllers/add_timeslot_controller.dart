@@ -52,7 +52,9 @@ class AddTimeslotController extends GetxController {
 
   void addTimeslot() async {
     try {
-      if (newDateTime.compareTo(DateTime.now()) < 0) {
+      DateTime formattedDateTime =
+          DateTime(newDateTime.year, newDateTime.month, newDateTime.day, 24);
+      if (formattedDateTime.compareTo(DateTime.now()) < 0) {
         Fluttertoast.showToast(msg: 'Date Time is in the past'.tr);
         return;
       }
@@ -77,7 +79,9 @@ class AddTimeslotController extends GetxController {
   }
 
   void editTimeSlot() async {
-    if (newDateTime.compareTo(DateTime.now()) < 0) {
+    DateTime formattedDateTime =
+        DateTime(newDateTime.year, newDateTime.month, newDateTime.day, 24);
+    if (formattedDateTime.compareTo(DateTime.now()) < 0) {
       Fluttertoast.showToast(msg: 'Date Time is in the past'.tr);
       return;
     }
