@@ -50,7 +50,7 @@ class NotificationService {
             channelDescription: channel.description,
             importance: Importance.high,
             color: Styles.primaryBlueColor,
-            icon: '@mipmap/launcher_icon'),
+            icon: '@mipmap/ic_launcher'),
       ),
     );
   }
@@ -69,7 +69,7 @@ class NotificationService {
                 channelDescription: channel.description,
                 color: Styles.primaryBlueColor,
                 playSound: true,
-                icon: '@mipmap/launcher_icon'),
+                icon: '@mipmap/ic_launcher'),
           ),
         );
       }
