@@ -43,7 +43,8 @@ class OrderDetailController extends GetxController {
           DoctorService.doctor!.doctorName!,
           orderedTimeslot.bookByWho!.userId!,
           orderedTimeslot.timeSlotId!,
-          token);
+          token,
+          orderedTimeslot.timeSlotId!);
       EasyLoading.dismiss();
       Get.toNamed(
         '/video-call',
