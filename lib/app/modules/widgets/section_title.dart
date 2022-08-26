@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title, required this.subTitle})
+  const SectionTitle(
+      {Key? key, required this.title, required this.subTitle, this.onPressed})
       : super(key: key);
   final String title;
   final String subTitle;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,7 +28,7 @@ class SectionTitle extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
               )),
-          onPressed: () {},
+          onPressed: onPressed,
         ),
       ],
     );

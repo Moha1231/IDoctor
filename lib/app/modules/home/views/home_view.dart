@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/order_tile.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/profile_picture_circle.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/review_tile.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/widgets/empty_list_widget.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/widgets/section_title.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 
@@ -154,13 +156,30 @@ class HomeView extends GetView<HomeController> {
               SectionTitle(
                 title: 'Review'.tr,
                 subTitle: 'See More'.tr,
+                onPressed: () {
+                  Get.toNamed(Routes.REVIEW);
+                },
               ),
               Container(
                   height: 200,
+                  width: Get.width,
                   child: dahsboardData.listReview!.isNotEmpty
                       ? ListView.builder(
+                          shrinkWrap: true,
                           itemCount: dahsboardData.listAppointment!.length,
-                          itemBuilder: (contex, index) => ListTile())
+                          itemBuilder: (contex, index) => ReviewTile(
+                                name: dahsboardData.listReview![index]
+                                        .userReview!.displayName ??
+                                    "",
+                                imgUrl: dahsboardData.listReview![index]
+                                        .userReview!.photoUrl ??
+                                    '',
+                                rating:
+                                    dahsboardData.listReview![index].rating!,
+                                review:
+                                    dahsboardData.listReview![index].review ??
+                                        '',
+                              ))
                       : EmptyList(msg: 'no review'.tr)),
             ],
           ),

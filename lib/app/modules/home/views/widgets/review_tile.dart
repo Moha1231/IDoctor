@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
@@ -7,14 +9,19 @@ class ReviewTile extends StatelessWidget {
       {Key? key,
       required this.imgUrl,
       required this.name,
-      required this.dateOrder})
+      required this.rating,
+      required this.review})
       : super(key: key);
   final String imgUrl;
   final String name;
-  final DateTime dateOrder;
+  final int rating;
+  final String review;
 
   @override
   Widget build(BuildContext context) {
+    var imagePath = imgUrl.isNotEmpty
+        ? NetworkImage(imgUrl)
+        : AssetImage('assets/images/default-profile.png');
     return Container(
       margin: EdgeInsets.only(bottom: 8),
       height: 68,
@@ -43,19 +50,50 @@ class ReviewTile extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Styles.whiteGreyColor,
                   image: DecorationImage(
-                    image: NetworkImage(imgUrl),
+                    image: imagePath as ImageProvider,
                   ),
                 ),
               ),
               SizedBox(
                 width: 12,
               ),
-              Text(
-                name,
-                style: GoogleFonts.nunito(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black),
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      name,
+                      style: GoogleFonts.nunito(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                    Container(
+                      width: 250,
+                      child: Flexible(
+                        child: Text(
+                          review,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.nunito(
+                              fontWeight: FontWeight.w700, color: Colors.black),
+                          maxLines: 2,
+                          softWrap: false,
+                        ),
+                      ),
+                    ),
+                    RatingBarIndicator(
+                      rating: rating.toDouble(),
+                      itemBuilder: (context, index) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      itemCount: 5,
+                      itemSize: 22.0,
+                      direction: Axis.horizontal,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

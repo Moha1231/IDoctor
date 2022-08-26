@@ -25,6 +25,7 @@ abstract class Routes {
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const CHAT = _Paths.CHAT;
   static const LIST_CHAT = _Paths.LIST_CHAT;
+  static const REVIEW = _Paths.REVIEW;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const FORGOT_PASSWORD = '/forgot-password';
   static const CHAT = '/chat';
   static const LIST_CHAT = '/list-chat';
+  static const REVIEW = '/review';
 }

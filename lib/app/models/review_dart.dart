@@ -1,27 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hallo_doctor_doctor_app/app/models/user_review_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'review_dart.g.dart';
+
+@JsonSerializable(ignoreUnannotated: true)
 class ReviewModel {
-  // ReviewModel() : super(_keyTableName);
-  // ReviewModel.clone() : this();
-  // static const String _keyTableName = 'Review';
-  // @override
-  // clone(Map<String, dynamic> map) => ReviewModel.clone()..fromJson(map);
-
-  // static const String _review = 'review';
-  // String? get review => get<String>(_review);
-  // set review(String? value) => set<String>(_review, value!);
-
-  // static const String _rating = 'rating';
-  // int? get rating => get<int>(_rating);
-  // set rating(int? value) => set<int>(_rating, value!);
-
-  // static const String _timeslot = 'timeslot';
-  // TimeSlot? get timeslot => get<TimeSlot>(_timeslot);
-  // set timeslot(TimeSlot? value) => set<TimeSlot>(_timeslot, value!);
-
-  // static const String _user = 'user';
-  // ParseUser? get user => get<ParseUser>(_user);
-  // set user(ParseUser? value) => set<ParseUser>(_user, value!);
-
-  // static const String _doctor = 'doctor';
-  // Doctor? get doctor => get<Doctor>(_doctor);
-  // set doctor(Doctor? value) => set<Doctor>(_doctor, value!);
+  String? id;
+  @JsonKey(name: 'doctorId')
+  String? doctorId;
+  @JsonKey(name: 'timeSlotId')
+  String? timeSlotId;
+  @JsonKey(name: 'review')
+  String? review;
+  @JsonKey(name: 'rating')
+  int? rating;
+  @JsonKey(name: 'user')
+  UserReview? userReview;
+  @JsonKey(name: 'userId')
+  String? userId;
+  ReviewModel({this.id});
+  factory ReviewModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
+  factory ReviewModel.fromFirestore(DocumentSnapshot doc) =>
+      ReviewModel.fromJson(doc.data()! as Map<String, dynamic>)..id = doc.id;
 }

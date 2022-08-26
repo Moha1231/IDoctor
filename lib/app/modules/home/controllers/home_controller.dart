@@ -62,7 +62,9 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
 
   getListReview(Doctor doctor) async {
     try {
-      dashboardModel.listReview = await ReviewService().getListReview(doctor);
+      dashboardModel.listReview = await ReviewService().getListReview(
+        doctor,
+      );
     } catch (err) {
       printError(info: err.toString());
     }

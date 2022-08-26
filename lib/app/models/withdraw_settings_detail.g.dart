@@ -10,8 +10,8 @@ WithdrawSettingsDetail _$WithdrawSettingsDetailFromJson(
         Map<String, dynamic> json) =>
     WithdrawSettingsDetail(
       id: json['id'] as String?,
-      percentage: json['percentage'] as int?,
-      tax: json['tax'] as int?,
+      percentage: json['percentage'] as int? ?? 0,
+      tax: json['tax'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$WithdrawSettingsDetailToJson(
