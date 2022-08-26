@@ -44,7 +44,7 @@ class OrderView extends GetView<OrderController> {
                     subtitle: Text(
                       'at '.tr +
                           DateFormat('EEEE, dd, MMMM')
-                              .format(listOrder[index].purchaseTime!),
+                              .format(listOrder[index].timeSlot!),
                     ),
                     trailing: Wrap(
                       spacing: 5,
