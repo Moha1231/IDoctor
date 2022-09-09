@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/order_tile.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/profile_picture_circle.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/home/views/widgets/review_tile.dart';
@@ -90,11 +91,16 @@ class HomeView extends GetView<HomeController> {
                         SizedBox(
                           height: 5,
                         ),
-                        Text(
-                          currencySign + dahsboardData!.balance.toString(),
-                          style: GoogleFonts.inter(
-                              fontSize: 40, fontWeight: FontWeight.w400),
-                        ),
+                        dahsboardData!.balance == null
+                            ? Text(currencySign + "0",
+                                style: GoogleFonts.inter(
+                                    fontSize: 40, fontWeight: FontWeight.w400))
+                            : Text(
+                                currencySign +
+                                    dahsboardData!.balance.toString(),
+                                style: GoogleFonts.inter(
+                                    fontSize: 40, fontWeight: FontWeight.w400),
+                              ),
                         SizedBox(
                           height: 10,
                         ),
@@ -137,6 +143,9 @@ class HomeView extends GetView<HomeController> {
               SectionTitle(
                 title: 'Upcoming Appointment'.tr,
                 subTitle: 'See More'.tr,
+                onPressed: () {
+                  Get.find<DashboardController>().activateTabOrder();
+                },
               ),
               Container(
                   height: 200,

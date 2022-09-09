@@ -29,12 +29,24 @@ class DashboardController extends GetxController {
   void onClose() {}
 
   void initTabAppointment() {
-    // interval(count1, (_) => print("interval $_"), time: Duration(seconds: 1));
     Get.find<AppointmentController>().initDoctorSchedule();
-    print('init appointment');
   }
 
   void initTabOrder() {
     Get.find<OrderController>().initOrderedTimeSlot();
+  }
+
+  void activateTabAppointment() {
+    initTabAppointment();
+    updateTabSelection(1);
+  }
+
+  void activateTabOrder() {
+    initTabOrder();
+    updateTabSelection(2);
+  }
+
+  void updateTabSelection(int index) {
+    selectedIndex = index;
   }
 }

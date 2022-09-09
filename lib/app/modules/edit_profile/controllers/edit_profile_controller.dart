@@ -13,7 +13,7 @@ class EditProfileController extends GetxController {
   //TODO: Implement EditProfileController
 
   final username = UserService().currentUser!.displayName.obs;
-  var email = UserService().currentUser!.displayName.obs;
+  var email = UserService().currentUser!.email.obs;
   final password = '******';
   var newPassword = ''.obs;
   var basePrice = 0.obs;

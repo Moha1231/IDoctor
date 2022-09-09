@@ -72,8 +72,10 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                           // Handles Form Validation for First Name
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
-                            FormBuilderValidators.equal(
-                                context, controller.newPassword.value),
+                            FormBuilderValidators.equal<String>(
+                              context,
+                              controller.newPassword.value,
+                            ),
                             FormBuilderValidators.minLength(context, 3)
                           ]),
                           decoration: InputDecoration(

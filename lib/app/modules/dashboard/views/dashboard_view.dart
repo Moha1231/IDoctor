@@ -19,9 +19,6 @@ class DashboardView extends GetView<DashboardController> {
     ListChatView(),
     ProfileView()
   ];
-  void updateTabSelection(int index) {
-    controller.selectedIndex = index;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +38,7 @@ class DashboardView extends GetView<DashboardController> {
                 IconButton(
                   //update the bottom app bar view each time an item is clicked
                   onPressed: () {
-                    updateTabSelection(0);
+                    controller.updateTabSelection(0);
                   },
                   iconSize: 27,
                   icon: Icon(
@@ -54,8 +51,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 IconButton(
                   onPressed: () {
-                    controller.initTabAppointment();
-                    updateTabSelection(1);
+                    controller.activateTabAppointment();
                   },
                   iconSize: 27.0,
                   icon: Icon(
@@ -67,7 +63,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 IconButton(
                   onPressed: () {
-                    updateTabSelection(2);
+                    controller.updateTabSelection(2);
                     controller.initTabOrder();
                   },
                   iconSize: 27.0,
@@ -80,7 +76,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 IconButton(
                   onPressed: () {
-                    updateTabSelection(3);
+                    controller.updateTabSelection(3);
                     //controller.initTabOrder();
                   },
                   iconSize: 27.0,
@@ -93,7 +89,7 @@ class DashboardView extends GetView<DashboardController> {
                 ),
                 IconButton(
                   onPressed: () {
-                    updateTabSelection(4);
+                    controller.updateTabSelection(4);
                   },
                   iconSize: 27.0,
                   icon: Icon(
