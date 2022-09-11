@@ -175,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                   child: dahsboardData.listReview!.isNotEmpty
                       ? ListView.builder(
                           shrinkWrap: true,
-                          itemCount: dahsboardData.listAppointment!.length,
+                          itemCount: dahsboardData.listReview!.length,
                           itemBuilder: (contex, index) => ReviewTile(
                                 name: dahsboardData.listReview![index]
                                         .userReview!.displayName ??
