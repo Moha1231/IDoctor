@@ -14,8 +14,9 @@ import 'package:jiffy/jiffy.dart';
 
 class AddTimeslotController extends GetxController {
   late TimeOfDay timeSlot;
-  DateTime date = Get.arguments[0]['date'].toLocal();
+  DateTime date = Get.arguments[0]['date'];
   late DateTime newDateTime;
+  late DateTime initialTime;
   TimeSlot? editedTimeSlot = Get.arguments[0]['timeSlot'];
   int? price;
   int? duration = 20;
@@ -40,11 +41,24 @@ class AddTimeslotController extends GetxController {
       timeSlot = TimeOfDay.fromDateTime(editedTimeSlot!.timeSlot!);
       isRepeatedTimeslot =
           editedTimeSlot!.parentTimeslotId != null ? true : false;
+      setupInitialTime(TimeOfDay.fromDateTime(newDateTime));
       update();
     } else {
       newDateTime = date;
+      print('current date time : ' + newDateTime.isUtc.toString());
       timeSlot = TimeOfDay.fromDateTime(date);
+      setupInitialTime(TimeOfDay.fromDateTime(DateTime.now()));
     }
+  }
+
+  setupInitialTime(TimeOfDay time) {
+    DateTime now = DateTime.now();
+    initialTime =
+        DateTime(date.year, date.month, date.day, now.hour, now.minute);
+    newDateTime = initialTime;
+    newDateTime.toLocal();
+    print('initial time : ' + initialTime.toString());
+    print('new date time : ' + newDateTime.toString());
   }
 
   @override

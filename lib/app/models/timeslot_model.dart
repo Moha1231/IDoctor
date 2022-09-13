@@ -44,9 +44,9 @@ class TimeSlot {
   factory TimeSlot.fromJson(Map<String, dynamic> jsonData) {
     return TimeSlot(
         timeSlotId: jsonData[_timeSlotId],
-        timeSlot: (jsonData[_timeSlot] as Timestamp).toDate(),
+        timeSlot: (jsonData[_timeSlot] as Timestamp).toDate().toLocal(),
         pastTimeSlot: jsonData[_pastTimeSlot] != null
-            ? (jsonData[_pastTimeSlot] as Timestamp).toDate()
+            ? (jsonData[_pastTimeSlot] as Timestamp).toDate().toLocal()
             : null,
         duration: jsonData[_duration],
         price: jsonData[_price],
@@ -73,7 +73,7 @@ class TimeSlot {
       };
     } else {
       return {
-        _timeSlot: Timestamp.fromDate(timeSlot.timeSlot!),
+        _timeSlot: Timestamp.fromDate(timeSlot.timeSlot!.toUtc()),
         _duration: timeSlot.duration,
         _price: timeSlot.price,
         _available: timeSlot.available,

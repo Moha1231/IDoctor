@@ -10,11 +10,10 @@ import '../controllers/appointment_controller.dart';
 enum TimeSlotViewType { add, edit }
 
 class AppointmentView extends GetView<AppointmentController> {
-  DateTime dateTimePast = Jiffy(DateTime.now().toUtc())
+  DateTime dateTimePast = Jiffy(DateTime.now())
       .subtract(months: 1)
       .dateTime; //range calendar 1 month past from now
-  DateTime dateTimeFuture =
-      Jiffy(DateTime.now().toUtc()).add(months: 6).dateTime; //
+  DateTime dateTimeFuture = Jiffy(DateTime.now()).add(months: 6).dateTime; //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
