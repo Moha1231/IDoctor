@@ -43,5 +43,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Let us Use the Camera</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Let us use the photo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Let us Use Microphone</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>
