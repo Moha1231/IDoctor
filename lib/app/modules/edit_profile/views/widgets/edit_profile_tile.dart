@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditProfileTile extends StatelessWidget {
-  const EditProfileTile({Key? key, this.title, this.subtitle, this.onTap})
+  const EditProfileTile(
+      {Key? key,
+      this.title,
+      this.subtitle,
+      this.onTap,
+      this.textAction = 'Change'})
       : super(key: key);
 
   final String? title;
   final String? subtitle;
   final VoidCallback? onTap;
+  final String textAction;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +46,7 @@ class EditProfileTile extends StatelessWidget {
                 : TextButton(
                     onPressed: onTap,
                     child: Text(
-                      'Change',
+                      textAction,
                       style: GoogleFonts.inter(
                           fontSize: 15, fontWeight: FontWeight.w600),
                     ))

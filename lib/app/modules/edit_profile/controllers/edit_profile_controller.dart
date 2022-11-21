@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/change_base_price.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/change_password_page.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/edit_profile/views/pages/update_email_page.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
@@ -72,5 +73,9 @@ class EditProfileController extends GetxController {
     } finally {
       EasyLoading.dismiss();
     }
+  }
+
+  void toDeleteAccount() {
+    Get.toNamed(Routes.DELETE_ACCOUNT);
   }
 }

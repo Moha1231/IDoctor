@@ -56,6 +56,14 @@ class EditProfileView extends GetView<EditProfileController> {
                         controller.toChangeBasePrice();
                       },
                     )),
+                EditProfileTile(
+                  title: 'Account'.tr,
+                  subtitle: 'Delete Account'.tr,
+                  onTap: () {
+                    controller.toDeleteAccount();
+                  },
+                  textAction: 'Delete'.tr,
+                ),
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hallo_doctor_doctor_app/app/services/firebase_service.dart';
 
@@ -116,5 +117,14 @@ class UserService {
         .get();
     if (userSnapshot.exists) return true;
     return false;
+  }
+
+  Future deleteAccountPermanently() async {
+    try {
+      var callable = FirebaseFunctions.instance.httpsCallable('deleteUser');
+      await callable({'userId': user!.uid});
+    } catch (e) {
+      return Future.error(e);
+    }
   }
 }

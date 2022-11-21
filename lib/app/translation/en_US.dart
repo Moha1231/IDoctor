@@ -149,5 +149,18 @@ const Map<String, String> en = {
       'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified',
   'OK': 'OK',
   'Base Price': 'Base Price',
-  'Change Base Price': 'Change Base Price'
+  'Change Base Price': 'Change Base Price',
+  'Delete Account': 'Delete Account',
+  "Are you sure you wanto delete your account, you can still cancel it":
+      "Are you sure you wanto delete your account, you can still cancel it",
+  "Delete My Account": "Delete My Account",
+  "Text Wrong": "Text Wrong",
+  "Are you sure you wanto delete your account? Please read how account deletion will affect":
+      "Are you sure you wanto delete your account? Please read how account deletion will affect",
+  "Deleting your account remove personal information from our database. Your email become personally reserverd and same email cannot be re-used to register new account.":
+      "Deleting your account remove personal information from our database. Your email become personally reserverd and same email cannot be re-used to register new account.",
+  "Deleting your account will unsubscribe you from all mailing list":
+      "Deleting your account will unsubscribe you from all mailing list",
+  "Confirm Account Deletion": "Confirm Account Deletion",
+  "Delete my Account": "Delete my Account"
 };

@@ -12,6 +12,8 @@ import '../modules/chat/bindings/chat_binding.dart';
 import '../modules/chat/views/chat_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/delete_account/bindings/delete_account_binding.dart';
+import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/edit_profile/views/edit_profile_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
@@ -149,6 +151,11 @@ class AppPages {
       name: _Paths.REVIEW,
       page: () => const ReviewView(),
       binding: ReviewBinding(),
+    ),
+    GetPage(
+      name: _Paths.DELETE_ACCOUNT,
+      page: () => const DeleteAccountView(),
+      binding: DeleteAccountBinding(),
     ),
   ];
 }
