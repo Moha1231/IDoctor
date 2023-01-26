@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/repeat_duration_model.dart';
 import 'package:hallo_doctor_doctor_app/app/models/repeat_model.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 
 import '../controllers/add_timeslot_controller.dart';
 import 'package:intl/intl.dart';
@@ -106,7 +107,7 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                 ),
                 Divider(),
                 FormBuilderTextField(
-                  name: 'Price',
+                  name: 'Price'.tr,
                   initialValue: (controller.price ?? '').toString(),
                   decoration: InputDecoration(
                       hintText: 'Price'.tr,
@@ -115,7 +116,8 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context),
                     FormBuilderValidators.numeric(context),
-                    FormBuilderValidators.max(context, 100),
+                    FormBuilderValidators.max(context, maximumTimeSlotPrice),
+                    FormBuilderValidators.min(context, minimumTimeSlotPrice)
                   ]),
                   onSaved: (price) {
                     controller.price = int.parse(price!);

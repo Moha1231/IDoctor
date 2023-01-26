@@ -36,7 +36,6 @@ class WithdrawDetailController extends GetxController {
 
   requestWithdraw() {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    print('password : ' + pass.value);
     WithdrawService()
         .requestWithdraw(pass.value, withdrawMethod, amount)
         .then((value) {

@@ -24,7 +24,7 @@ class ListChatView extends GetView<ListChatController> {
               margin: const EdgeInsets.only(
                 bottom: 200,
               ),
-              child: const Text('No Chat'),
+              child: Text('No Chat'.tr),
             );
           }
           return ListView.builder(

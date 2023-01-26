@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/add_doctor_detail/controllers/add_doctor_detail_controller.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -46,10 +47,15 @@ class EditImagePage extends GetView<AddDoctorDetailController> {
 
                   if (image == null) return;
                   imageFile = File(image!.path);
+                  EasyLoading.show();
                   var imageCropped = await ImageCropper().cropImage(
                       sourcePath: image!.path,
                       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
-                      aspectRatioPresets: [CropAspectRatioPreset.square]);
+                      aspectRatioPresets: [
+                        CropAspectRatioPreset.square
+                      ]).then((value) {
+                    EasyLoading.dismiss();
+                  });
                   if (imageCropped == null) return;
                   imageFile = File(imageCropped.path);
                   controller.update();
