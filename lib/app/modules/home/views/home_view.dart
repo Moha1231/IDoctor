@@ -123,7 +123,7 @@ class HomeView extends GetView<HomeController> {
                               fontSize: 40, fontWeight: FontWeight.w500),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 5,
                         ),
                         Text(
                           'this month'.tr,

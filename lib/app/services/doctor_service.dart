@@ -26,8 +26,6 @@ class DoctorService {
           'categoryId': doctorCategory.categoryId,
           'categoryName': doctorCategory.categoryName
         },
-        'doctorBasePrice': 10,
-        'accountStatus': 'nonactive'
       };
 
       if (isUpdate) {
@@ -35,6 +33,8 @@ class DoctorService {
         await doctors.doc(DoctorService.doctor!.doctorId).update(doctorsData);
         await getDoctor(forceGet: true);
       } else {
+        doctorsData['doctorBasePrice'] = 10;
+        doctorsData['accountStatus'] = 'nonactive';
         doctorsData['createdAt'] = FieldValue.serverTimestamp();
         doctorsData['updatedAt'] = FieldValue.serverTimestamp();
         var doctor = await doctors.add(doctorsData);

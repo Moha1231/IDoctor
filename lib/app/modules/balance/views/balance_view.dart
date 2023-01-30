@@ -33,7 +33,7 @@ class BalanceView extends GetView<BalanceController> {
           child: Column(
             children: [
               Container(
-                height: 175,
+                height: 190,
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 width: double.infinity,
                 decoration: BoxDecoration(

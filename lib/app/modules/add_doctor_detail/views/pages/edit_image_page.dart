@@ -55,6 +55,7 @@ class EditImagePage extends GetView<AddDoctorDetailController> {
                         CropAspectRatioPreset.square
                       ]).then((value) {
                     EasyLoading.dismiss();
+                    return value;
                   });
                   if (imageCropped == null) return;
                   imageFile = File(imageCropped.path);

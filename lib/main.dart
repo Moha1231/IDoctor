@@ -39,14 +39,14 @@ Future main() async {
           FormBuilderLocalizations.delegate,
         ],
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            elevation: 2,
-            color: Colors.white,
-            iconTheme: IconThemeData(
-                color: Colors
-                    .black), // set backbutton color here which will reflect in all screens.
-          ),
-        ),
+            appBarTheme: AppBarTheme(
+              elevation: 2,
+              color: Colors.white,
+              iconTheme: IconThemeData(
+                  color: Colors
+                      .black), // set backbutton color here which will reflect in all screens.
+            ),
+            useMaterial3: true),
         locale: LocalizationService.locale,
         translations: LocalizationService()),
   );
