@@ -123,12 +123,12 @@ class ProfileView extends GetView<ProfileController> {
             hideArrowIcon: true,
           ),
           // test button, you can delete it
-          ElevatedButton(
-              key: Key('testButton'),
-              onPressed: () {
-                controller.test();
-              },
-              child: Text('test'))
+          // ElevatedButton(
+          //     key: Key('testButton'),
+          //     onPressed: () {
+          //       controller.test();
+          //     },
+          //     child: Text('test'))
         ],
       ),
     );
