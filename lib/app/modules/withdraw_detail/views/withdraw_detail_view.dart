@@ -150,7 +150,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
               SizedBox(
                 height: 20,
               ),
-              submitButton(
+              SubmitButton(
                   onTap: () {
                     controller.toPasswordConfirmation();
                   },

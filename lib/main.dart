@@ -28,10 +28,20 @@ Future main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  runApp(
-    GetMaterialApp(
+  runApp(MainDoctorApp(
+    isUserLogin: isUserLogin,
+  ));
+}
+
+class MainDoctorApp extends StatelessWidget {
+  MainDoctorApp({super.key, required this.isUserLogin});
+  bool isUserLogin;
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Application",
+        title: "Hallo Doctor Doctor App",
         initialRoute: isUserLogin ? AppPages.dashboard : AppPages.login,
         getPages: AppPages.routes,
         builder: EasyLoading.init(),
@@ -48,6 +58,6 @@ Future main() async {
             ),
             useMaterial3: true),
         locale: LocalizationService.locale,
-        translations: LocalizationService()),
-  );
+        translations: LocalizationService());
+  }
 }

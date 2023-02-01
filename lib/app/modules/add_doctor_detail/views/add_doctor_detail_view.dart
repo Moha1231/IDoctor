@@ -123,7 +123,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                 Divider(
                   height: 40,
                 ),
-                submitButton(
+                SubmitButton(
                     onTap: () {
                       controller.saveDoctorDetail();
                     },

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -10,6 +11,7 @@ import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/appointment/controllers/appointment_controller.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 import 'package:jiffy/jiffy.dart';
 
 class AddTimeslotController extends GetxController {
@@ -30,6 +32,8 @@ class AddTimeslotController extends GetxController {
   var repeatDurationVisibility = false.obs;
   var isRepeatedTimeslot = false;
   bool isEditMode = false;
+  final CurrencyTextInputFormatter currencyFormat = CurrencyTextInputFormatter(
+      locale: locale, decimalDigits: 0, symbol: currencySign);
   @override
   void onInit() {
     super.onInit();

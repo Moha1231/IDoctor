@@ -112,16 +112,25 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                   decoration: InputDecoration(
                       hintText: 'Price'.tr,
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.attach_money)),
+                      prefixIcon: Icon(Icons.money)),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context),
-                    FormBuilderValidators.numeric(context),
                     FormBuilderValidators.max(context, maximumTimeSlotPrice),
                     FormBuilderValidators.min(context, minimumTimeSlotPrice)
                   ]),
                   onSaved: (price) {
-                    controller.price = int.parse(price!);
+                    controller.price = int.parse(controller.currencyFormat
+                        .getUnformattedValue()
+                        .toString());
+                    if (controller.price! > maximumTimeSlotPrice) {
+                      throw Exception(
+                          'Price can not be more than $currencySign$maximumTimeSlotPrice ');
+                    } else if (controller.price! < minimumTimeSlotPrice) {
+                      throw Exception(
+                          'Price can not be lower than $currencySign$minimumTimeSlotPrice ');
+                    }
                   },
+                  inputFormatters: [controller.currencyFormat],
                 ),
                 Divider(),
                 FormBuilderDropdown(

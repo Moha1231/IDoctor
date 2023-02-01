@@ -61,7 +61,7 @@ class AddPaypalPage extends GetView<WithdrawMethodController> {
                 SizedBox(
                   height: 30,
                 ),
-                submitButton(
+                SubmitButton(
                     onTap: () {
                       _formKey.currentState!.save();
                       if (_formKey.currentState!.validate()) {

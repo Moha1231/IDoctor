@@ -13,3 +13,4 @@ const minimumTimeSlotPrice = 0;
 //this doesn't represent the currency, if you wanto change the currency
 //please follow the tutorial, this is only for the sign
 const currencySign = '\$';
+const locale = 'en';

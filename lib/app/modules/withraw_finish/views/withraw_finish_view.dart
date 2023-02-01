@@ -43,7 +43,7 @@ class WithrawFinishView extends GetView<WithrawFinishController> {
             SizedBox(
               height: 50,
             ),
-            submitButton(
+            SubmitButton(
                 onTap: () async {
                   await controller.ok();
                 },
