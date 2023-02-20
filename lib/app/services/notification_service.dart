@@ -6,8 +6,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:hallo_doctor_doctor_app/app/modules/chat/controllers/chat_controller.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import '../styles/styles.dart';
+import 'chat_service.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     "high_important_channel", "High Importance Notifications",
@@ -60,28 +63,55 @@ class NotificationService {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          NotificationDetails(
-            android: AndroidNotificationDetails(channel.id, channel.name,
-                channelDescription: channel.description,
-                color: Styles.primaryBlueColor,
-                playSound: true,
-                icon: '@mipmap/ic_launcher'),
-          ),
-        );
+        print('Notification type : ' + message.data['type']);
+        if (message.data['type'] == 'chat') {
+          ///make sure when notification arrive we are not in chat route, because it will be annoying
+          ///but we are currently not checking if this notification from this user chat or not
+          if (Get.currentRoute == Routes.CHAT) {
+            ChatController chatController = Get.find<ChatController>();
+            if (chatController.room['id'] == message.data['roomId']) {
+              ///notification should not showing if app opening chat with notification from same person arrive
+              print(
+                  'Notification chat arrive, but app opening chat with the same person');
+              return;
+            }
+          }
+
+          flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(channel.id, channel.name,
+                  channelDescription: channel.description,
+                  color: Styles.primaryBlueColor,
+                  playSound: true,
+                  icon: '@mipmap/ic_launcher'),
+            ),
+          );
+        } else {
+          flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(channel.id, channel.name,
+                  channelDescription: channel.description,
+                  color: Styles.primaryBlueColor,
+                  playSound: true,
+                  icon: '@mipmap/ic_launcher'),
+            ),
+          );
+        }
       }
     });
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
       print('a new message opened app are was published');
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
+      var roomData = await ChatService().getRoomById(message.data['roomId']);
       if (notification != null && android != null) {
-        Get.defaultDialog(
-            title: notification.title!,
-            content: Text(notification.body ?? 'body empty'));
+        Get.toNamed(Routes.CHAT, arguments: roomData);
       }
     });
   }

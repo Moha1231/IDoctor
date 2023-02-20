@@ -12,7 +12,7 @@ import '../../../models/doctor_model.dart';
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
 
-  var user = UserService().currentUser;
+  var user = UserService().currentUserFirebase;
   bool tap = false;
   var photoUrl = ''.obs;
   var displayName = ''.obs;
@@ -23,6 +23,7 @@ class ProfileController extends GetxController {
     super.onReady();
     photoUrl.value = await UserService().getPhotoUrl();
     Doctor? doc = await DoctorService().getDoctor();
+
     accountStatus = doc!.accountStatus!;
     if (accountStatus == 'active') {
       isAccountActivated = true;
@@ -63,6 +64,8 @@ class ProfileController extends GetxController {
   }
 
   void test() async {
+    var roomData = await ChatService().getRoomById('04lHxDfpu8shsGDHDDOB');
+    print('data : ' + roomData.toString());
     // //await ChatService().getListChat();
     // NotificationService().testNotification();
   }

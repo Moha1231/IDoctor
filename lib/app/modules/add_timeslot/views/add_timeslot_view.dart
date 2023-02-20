@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/repeat_duration_model.dart';
 import 'package:hallo_doctor_doctor_app/app/models/repeat_model.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/localization.dart';
 
 import '../controllers/add_timeslot_controller.dart';
 import 'package:intl/intl.dart';
@@ -114,7 +115,8 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                       border: InputBorder.none,
                       prefixIcon: Icon(Icons.money)),
                   validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context),
+                    FormBuilderValidators.required(context,
+                        errorText: 'Price cannot be empty'.tr),
                     FormBuilderValidators.max(context, maximumTimeSlotPrice),
                     FormBuilderValidators.min(context, minimumTimeSlotPrice)
                   ]),
@@ -150,7 +152,7 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                   name: 'Date',
                   inputType: InputType.date,
                   initialValue: controller.date,
-                  format: DateFormat('EEEE, dd MMMM, y'),
+                  format: DateFormat('EEEE, dd MMMM, y', locale),
                   onChanged: (dateTime) {
                     controller.date = dateTime!;
                   },

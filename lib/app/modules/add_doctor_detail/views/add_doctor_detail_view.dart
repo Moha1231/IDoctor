@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/add_doctor_detail/views/pages/chose_doctor_category_page.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/add_doctor_detail/views/widgets/display_image.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/login/views/widgets/submit_button.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/profile/controllers/profile_controller.dart';
 
 import '../controllers/add_doctor_detail_controller.dart';
 
@@ -15,6 +16,27 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
       appBar: AppBar(
         title: Text('Add Doctor Information'.tr),
         centerTitle: true,
+        actions: [
+          controller.isEdit == false
+              ? PopupMenuButton(
+                  icon: Icon(
+                      Icons.menu), //don't specify icon if you want 3 dot menu
+                  color: Colors.blue,
+                  itemBuilder: (context) => [
+                    PopupMenuItem<int>(
+                      value: 0,
+                      child: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                  onSelected: (item) {
+                    ProfileController().logout();
+                  },
+                )
+              : SizedBox(),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(30, 20, 30, 20),

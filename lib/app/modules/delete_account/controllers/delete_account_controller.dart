@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 

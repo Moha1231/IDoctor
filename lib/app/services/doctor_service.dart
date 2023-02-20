@@ -38,7 +38,7 @@ class DoctorService {
         doctorsData['createdAt'] = FieldValue.serverTimestamp();
         doctorsData['updatedAt'] = FieldValue.serverTimestamp();
         var doctor = await doctors.add(doctorsData);
-        UserService().setDoctorId(doctor.id);
+        await UserService().setDoctorId(doctor.id);
       }
     } catch (e) {
       return Future.error(e);
@@ -54,7 +54,7 @@ class DoctorService {
       }
 
       var doctorId = await UserService().getDoctorId();
-      print('doctor id : ' + doctorId);
+      print('doctor id : ' + doctorId.toString());
       var doctorReference = await FirebaseFirestore.instance
           .collection('Doctors')
           .doc(doctorId)

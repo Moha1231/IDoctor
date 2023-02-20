@@ -39,12 +39,12 @@ class OrderDetailController extends GetxController {
       };
       await VideoCallService()
           .createRoom(orderedTimeslot.timeSlotId!, roomData);
-      notificationService.notificationStartAppointment(
-          DoctorService.doctor!.doctorName!,
-          orderedTimeslot.bookByWho!.userId!,
-          orderedTimeslot.timeSlotId!,
-          token,
-          orderedTimeslot.timeSlotId!);
+      // notificationService.notificationStartAppointment(
+      //     DoctorService.doctor!.doctorName!,
+      //     orderedTimeslot.bookByWho!.userId!,
+      //     orderedTimeslot.timeSlotId!,
+      //     token,
+      //     orderedTimeslot.timeSlotId!);
       EasyLoading.dismiss();
       Get.toNamed(
         '/video-call',

@@ -1,6 +1,5 @@
 import 'package:hallo_doctor_doctor_app/app/models/doctor_category.dart';
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'doctor_model.g.dart';
@@ -28,15 +27,15 @@ class Doctor {
   String? accountStatus;
   Doctor({
     this.id,
-    required this.doctorId,
-    required this.doctorName,
-    required this.doctorPicture,
-    required this.doctorPrice,
-    required this.doctorShortBiography,
-    required this.doctorCategory,
-    required this.doctorHospital,
-    required this.doctorBalance,
-    required this.accountStatus,
+    this.doctorId,
+    this.doctorName,
+    this.doctorPicture,
+    this.doctorPrice,
+    this.doctorShortBiography,
+    this.doctorCategory,
+    this.doctorHospital,
+    this.doctorBalance,
+    this.accountStatus,
   });
 
   factory Doctor.fromJson(Map<String, dynamic> json) => _$DoctorFromJson(json);

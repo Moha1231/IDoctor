@@ -1,4 +1,5 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
@@ -20,6 +21,13 @@ class VideoCallController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     initAgora();
   }
 
@@ -61,7 +69,11 @@ class VideoCallController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+  }
 
   void hangUp() async {
     Get.back();

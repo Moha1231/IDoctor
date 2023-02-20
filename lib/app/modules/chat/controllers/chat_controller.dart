@@ -9,7 +9,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:mime/mime.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_file_plus/open_file_plus.dart';
+//import 'package:open_file_safe/open_file_safe.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../services/user_service.dart';
@@ -24,7 +25,7 @@ class ChatController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    user = types.User(id: UserService().currentUser!.uid);
+    user = types.User(id: UserService().currentUserFirebase!.uid);
   }
 
   @override

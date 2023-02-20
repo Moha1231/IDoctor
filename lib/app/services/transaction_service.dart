@@ -7,7 +7,7 @@ class TransactionService {
     try {
       var transactionSnapshot = await FirebaseFirestore.instance
           .collection('Transaction')
-          .where('userId', isEqualTo: UserService.user!.uid)
+          .where('userId', isEqualTo: UserService().currentUserFirebase!.uid)
           .get();
       List<t.Transaction> listTransaction = transactionSnapshot.docs.map((doc) {
         var data = doc.data();

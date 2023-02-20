@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
+import 'package:hallo_doctor_doctor_app/app/utils/localization.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
@@ -106,30 +109,32 @@ class AppointmentView extends GetView<AppointmentController> {
                           title: _.eventSelectedDay[index].available == true
                               ? Text(
                                   "Time Slot at ".tr +
-                                      DateFormat("hh:mm a").format(
+                                      DateFormat("hh:mm a", locale).format(
                                           _.eventSelectedDay[index].timeSlot!),
                                 )
                               : Text(
                                   "Time Slot at ".tr +
-                                      DateFormat("hh:mm a").format(
+                                      DateFormat("hh:mm a", locale).format(
                                           _.eventSelectedDay[index].timeSlot!) +
                                       ' has been Ordered'.tr,
                                 ),
                           subtitle: Text(
-                            DateFormat("EEEE, dd MMMM, yyyy")
+                            DateFormat("EEEE, dd MMMM, yyyy", locale)
                                 .format(_.eventSelectedDay[index].timeSlot!),
                           ),
                           trailing: _.eventSelectedDay[index].available == true
                               ? IconButton(
                                   icon: Icon(Icons.edit),
                                   onPressed: () {
-                                    Get.toNamed('/add-timeslot', arguments: [
-                                      {
-                                        'timeSlot': _.eventSelectedDay[index],
-                                        'date':
-                                            _.eventSelectedDay[index].timeSlot
-                                      }
-                                    ]);
+                                    Get.toNamed(Routes.ADD_TIMESLOT,
+                                        arguments: [
+                                          {
+                                            'timeSlot':
+                                                _.eventSelectedDay[index],
+                                            'date': _.eventSelectedDay[index]
+                                                .timeSlot
+                                          }
+                                        ]);
                                   },
                                 )
                               : IconButton(

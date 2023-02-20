@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/doctor_category.dart';
 
 class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
@@ -21,6 +22,9 @@ class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
       )
     ];
   }
+
+  @override
+  String get searchFieldLabel => 'Search'.tr;
 
   //Back Button
   @override

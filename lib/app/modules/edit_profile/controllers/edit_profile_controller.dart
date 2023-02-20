@@ -13,8 +13,8 @@ import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
 class EditProfileController extends GetxController {
   //TODO: Implement EditProfileController
 
-  final username = UserService().currentUser!.displayName.obs;
-  var email = UserService().currentUser!.email.obs;
+  final username = UserService().currentUserFirebase!.displayName.obs;
+  var email = UserService().currentUserFirebase!.email.obs;
   final password = '******';
   var newPassword = ''.obs;
   var basePrice = 0.obs;

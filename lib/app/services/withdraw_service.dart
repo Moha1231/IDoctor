@@ -11,7 +11,7 @@ class WithdrawService {
         'name': name,
         'email': email,
         'method': 'paypal',
-        'userId': UserService.user!.uid
+        'userId': UserService().currentUserFirebase!.uid
       });
     } on FirebaseException catch (e) {
       return Future.error(e.message!);
@@ -24,7 +24,7 @@ class WithdrawService {
           .collection('WitdrawMethod')
           .where(
             'userId',
-            isEqualTo: UserService().currentUser!.uid,
+            isEqualTo: UserService().currentUserFirebase!.uid,
           )
           .get();
       List<WithdrawMethod> listWithdrawMethod =
@@ -49,7 +49,7 @@ class WithdrawService {
         FirebaseFirestore.instance.collection('WithdrawRequest').add({
           'amount': amount,
           'withdrawMethod': WithdrawMethod().toMap(withdrawMethod),
-          'userId': UserService.user!.uid
+          'userId': UserService().currentUserFirebase!.uid
         });
       }
     } catch (e) {

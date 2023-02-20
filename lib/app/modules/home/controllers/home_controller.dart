@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/models/dashboard_model.dart';
 import 'package:hallo_doctor_doctor_app/app/models/doctor_model.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
+import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/review_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
@@ -25,12 +27,13 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
 
     if (doctor == null) {
       if (await UserService().checkIfUserExist() == false) {
-        return Get.offNamed('/login');
+        AuthService().logout();
+        return Get.offAllNamed(Routes.LOGIN);
       } else {
-        return Get.offNamed('/add-doctor-detail');
+        return Get.offNamed(Routes.ADD_DOCTOR_DETAIL);
       }
     }
-    username.value = UserService().currentUser!.displayName!;
+    username.value = UserService().currentUserFirebase!.displayName!;
     UserService()
         .getPhotoUrl()
         .then((urlPicture) => profilePic.value = urlPicture);

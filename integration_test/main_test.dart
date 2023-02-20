@@ -55,7 +55,10 @@ void main() async {
     // Tap login button
     await tester.tap(loginButton, warnIfMissed: true);
     await tester.pumpAndSettle();
+    await tester.pump(Duration(milliseconds: 200));
+    await tester.tap(loginButton);
     await tester.pump(Duration(seconds: 20));
+
     //find test button
     expect(find.byKey(ValueKey('testButton')), findsNothing);
   });

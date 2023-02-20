@@ -30,6 +30,7 @@ const Map<String, String> en = {
   'Chose Doctor Category': 'Chose Doctor Category',
   'Save': 'Save',
   'Doctor Category': 'Doctor Category',
+  'Search': 'Search',
   'Upload a photo of yourself ': 'Upload a photo of yourself ',
   'Update': 'Update',
   'Edit Image': 'Edit Image',
@@ -37,6 +38,7 @@ const Map<String, String> en = {
   'Register': 'Register',
   'Don\'t have an account ?': 'Don\'t have an account ?',
   'Please choose your profile photo': 'Please choose your profile photo',
+  'Price cannot be empty':'Price cannot be empty',
   'Please chose doctor Specialty or Category':
       'Please chose doctor Specialty or Category',
   'loading...': 'loading...',

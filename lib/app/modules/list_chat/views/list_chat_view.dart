@@ -62,7 +62,7 @@ class ListChatView extends GetView<ListChatController> {
     if (room.type == types.RoomType.direct) {
       try {
         final otherUser = room.users.firstWhere(
-          (u) => u.id != UserService().currentUser!.uid,
+          (u) => u.id != UserService().currentUserFirebase!.uid,
         );
 
         color = getUserAvatarNameColor(otherUser);

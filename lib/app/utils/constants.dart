@@ -13,4 +13,11 @@ const minimumTimeSlotPrice = 0;
 //this doesn't represent the currency, if you wanto change the currency
 //please follow the tutorial, this is only for the sign
 const currencySign = '\$';
-const locale = 'en';
+
+const locale = 'en_US';
+
+///this is for notification icon file name
+/// you can change the notification icon in folder android/app/main/res/drawable/notification_icon.png,
+/// make sure the icon is 8 bit color and transparent background
+/// otherwise the notification icon will be full white
+const notificationIconName = 'notification_icon';
