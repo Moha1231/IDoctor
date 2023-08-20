@@ -10,8 +10,6 @@ import 'package:firebase_database/firebase_database.dart';
 import '../../../models/doctor_model.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
-
   var user = UserService().currentUserFirebase;
   bool tap = false;
   var photoUrl = ''.obs;

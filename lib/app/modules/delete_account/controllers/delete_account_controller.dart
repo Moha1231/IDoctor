@@ -11,20 +11,6 @@ class DeleteAccountController extends GetxController {
 
   TextEditingController textPermanentDeleteController = TextEditingController();
   String permanentlyDeleteText = 'PERMANENTLY DELETE';
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void deleteAccount() {
     if (textPermanentDeleteController.text == permanentlyDeleteText) {

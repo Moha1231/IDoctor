@@ -6,8 +6,6 @@ import 'package:hallo_doctor_doctor_app/app/services/transaction_service.dart';
 
 class BalanceController extends GetxController
     with StateMixin<List<Transaction>> {
-  //TODO: Implement BalanceController
-
   var balance = 0.obs;
   @override
   void onInit() async {
@@ -20,8 +18,6 @@ class BalanceController extends GetxController
     await getTransaction();
   }
 
-  @override
-  void onClose() {}
 
   Future getTransaction() async {
     change([], status: RxStatus.loading());

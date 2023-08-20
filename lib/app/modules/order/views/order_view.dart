@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/widgets/empty_list_widget.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
-
 import '../controllers/order_controller.dart';
 import 'package:intl/intl.dart';
 

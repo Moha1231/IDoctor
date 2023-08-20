@@ -79,10 +79,6 @@ class UserService {
 
   Future<String?> getDoctorId() async {
     try {
-      // var docRef = await FirebaseFirestore.instance
-      //     .collection('Users')
-      //     .where('uid', isEqualTo: currentUserFirebase!.uid).limit(1)
-      //     .get();
       var docRef = await FirebaseCollection()
           .userCol
           .doc(currentUserFirebase!.uid)

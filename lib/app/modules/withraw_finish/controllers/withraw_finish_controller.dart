@@ -6,7 +6,6 @@ import 'package:hallo_doctor_doctor_app/app/modules/balance/controllers/balance_
 
 class WithrawFinishController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  final count = 0.obs;
   late AnimationController animController;
   @override
   void onInit() {
@@ -15,9 +14,6 @@ class WithrawFinishController extends GetxController
         AnimationController(vsync: this, duration: Duration(seconds: 3));
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
   ok() async {
     try {
       EasyLoading.show(maskType: EasyLoadingMaskType.black);

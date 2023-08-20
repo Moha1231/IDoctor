@@ -80,10 +80,10 @@ class AddTimeslotController extends GetxController {
       if (validationSuccess) {
         formKey.currentState!.save();
         if (repeat.repeat != Repeat.NOT_REPEAT) {
-          var timeslotUploadId = await addOneTimeSlot(isParent: true);
+          var parentTimeSlotUploadId = await addOneTimeSlot(isParent: true);
           List<DateTime> listRepeatTimeslot =
               _generateRepeatTimeslot(repeat, repeatDuration);
-          await addRepeatTimeSlot(listRepeatTimeslot, timeslotUploadId);
+          await addRepeatTimeSlot(listRepeatTimeslot, parentTimeSlotUploadId);
         } else {
           await addOneTimeSlot();
         }

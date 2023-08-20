@@ -37,8 +37,8 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                       child: FormBuilderTextField(
                         // Handles Form Validation for First Name
                         validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(context),
-                          FormBuilderValidators.minLength(context, 3)
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.minLength(3)
                         ]),
                         decoration:
                             InputDecoration(labelText: 'Curren Password'.tr),
@@ -52,8 +52,8 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                       child: FormBuilderTextField(
                         // Handles Form Validation for First Name
                         validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(context),
-                          FormBuilderValidators.minLength(context, 3)
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.minLength(3)
                         ]),
                         decoration:
                             InputDecoration(labelText: 'New Password'.tr),
@@ -71,12 +71,11 @@ class ChangePasswordPage extends GetView<EditProfileController> {
                         child: FormBuilderTextField(
                           // Handles Form Validation for First Name
                           validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.required(),
                             FormBuilderValidators.equal<String>(
-                              context,
                               controller.newPassword.value,
                             ),
-                            FormBuilderValidators.minLength(context, 3)
+                            FormBuilderValidators.minLength(3)
                           ]),
                           decoration: InputDecoration(
                               labelText: 'Confirm New Password'.tr),

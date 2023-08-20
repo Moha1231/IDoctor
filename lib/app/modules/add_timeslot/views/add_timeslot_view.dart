@@ -115,10 +115,10 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                       border: InputBorder.none,
                       prefixIcon: Icon(Icons.money)),
                   validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context,
+                    FormBuilderValidators.required(
                         errorText: 'Price cannot be empty'.tr),
-                    FormBuilderValidators.max(context, maximumTimeSlotPrice),
-                    FormBuilderValidators.min(context, minimumTimeSlotPrice)
+                    FormBuilderValidators.max(maximumTimeSlotPrice),
+                    FormBuilderValidators.min(minimumTimeSlotPrice)
                   ]),
                   onSaved: (price) {
                     controller.price = int.parse(controller.currencyFormat
@@ -166,7 +166,6 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                     return Visibility(
                       visible: !controller.isEditMode,
                       child: DropdownSearch<RepeatTimeslot>(
-                        mode: Mode.MENU,
                         items: listRepeat,
                         itemAsString: (repeatTimeslot) =>
                             repeatTimeslot!.repeatText,
@@ -178,10 +177,11 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                           }
                         },
                         selectedItem: controller.repeat,
-                        dropdownSearchDecoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Icon(Icons.refresh),
-                            label: Text('Repeat Timeslot'.tr)),
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                border: InputBorder.none,
+                                prefixIcon: Icon(Icons.refresh),
+                                label: Text('Repeat Timeslot'.tr))),
                         onSaved: (RepeatTimeslot? repeat) {
                           controller.repeat = repeat!;
                         },
@@ -193,17 +193,17 @@ class AddTimeslotView extends GetView<AddTimeslotController> {
                 Obx(() => Visibility(
                       visible: controller.repeatDurationVisibility.value,
                       child: DropdownSearch<RepeatDuration>(
-                        mode: Mode.MENU,
                         items: listRepeatDuration,
                         itemAsString: (repeatDuration) {
                           return repeatDuration!.monthText;
                         },
                         onChanged: print,
                         selectedItem: controller.repeatDuration,
-                        dropdownSearchDecoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Icon(Icons.date_range_outlined),
-                            label: Text('Repeat for how long')),
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                border: InputBorder.none,
+                                prefixIcon: Icon(Icons.date_range_outlined),
+                                label: Text('Repeat for how long'))),
                         onSaved: (RepeatDuration? repeatDuration) {
                           controller.repeatDuration = repeatDuration!;
                         },

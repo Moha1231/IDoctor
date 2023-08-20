@@ -8,9 +8,6 @@ import 'package:hallo_doctor_doctor_app/app/services/withdraw_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
 
 class WithdrawDetailController extends GetxController {
-  //TODO: Implement WithdrawDetailController
-
-  final count = 0.obs;
   var pass = ''.obs;
   WithdrawMethod withdrawMethod = Get.arguments[0]['withdrawMethod'];
   int amount = Get.arguments[0]['amount'];
@@ -32,7 +29,6 @@ class WithdrawDetailController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 
   requestWithdraw() {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);

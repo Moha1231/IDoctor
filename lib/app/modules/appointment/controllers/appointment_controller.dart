@@ -10,8 +10,6 @@ import 'package:table_calendar/table_calendar.dart';
 
 class AppointmentController extends GetxController
     with StateMixin<LinkedHashMap<DateTime, List<TimeSlot>>> {
-  //TODO: Implement AppointmentController
-
   final formKey = GlobalKey<FormBuilderState>();
   var selectedDay = DateTime.now().obs;
   var focusDay = DateTime.now().obs;
