@@ -4,15 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/models/doctor_category.dart';
 import 'package:hallo_doctor_doctor_app/app/models/doctor_model.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/add_doctor_detail/views/pages/edit_image_page.dart';
-import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_category_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
-import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
 
 class AddDoctorDetailController extends GetxController

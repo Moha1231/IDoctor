@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
-import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/videocall_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/environment.dart';
 import 'package:permission_handler/permission_handler.dart';

@@ -10,7 +10,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/services/local_notification_service.dart';
-import 'package:hallo_doctor_doctor_app/app/services/notification_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 
 import 'app/routes/app_pages.dart';

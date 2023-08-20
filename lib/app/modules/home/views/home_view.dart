@@ -96,8 +96,7 @@ class HomeView extends GetView<HomeController> {
                                 style: GoogleFonts.inter(
                                     fontSize: 40, fontWeight: FontWeight.w400))
                             : Text(
-                                currencySign +
-                                    dahsboardData!.balance.toString(),
+                                currencySign + dahsboardData.balance.toString(),
                                 style: GoogleFonts.inter(
                                     fontSize: 40, fontWeight: FontWeight.w400),
                               ),

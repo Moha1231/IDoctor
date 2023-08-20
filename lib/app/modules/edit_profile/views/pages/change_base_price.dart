@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
 
 import '../../../../styles/styles.dart';
 import '../../controllers/edit_profile_controller.dart';

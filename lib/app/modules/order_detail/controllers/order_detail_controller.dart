@@ -4,12 +4,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
-import 'package:hallo_doctor_doctor_app/app/models/withdraw_settings_detail.dart';
-import 'package:hallo_doctor_doctor_app/app/services/doctor_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/notification_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/videocall_service.dart';
-import 'package:hallo_doctor_doctor_app/app/services/withdraw_service.dart';
 
 class OrderDetailController extends GetxController {
   TimeSlot orderedTimeslot = Get.arguments;
