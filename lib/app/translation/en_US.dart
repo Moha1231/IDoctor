@@ -38,7 +38,7 @@ const Map<String, String> en = {
   'Register': 'Register',
   'Don\'t have an account ?': 'Don\'t have an account ?',
   'Please choose your profile photo': 'Please choose your profile photo',
-  'Price cannot be empty':'Price cannot be empty',
+  'Price cannot be empty': 'Price cannot be empty',
   'Please chose doctor Specialty or Category':
       'Please chose doctor Specialty or Category',
   'loading...': 'loading...',
@@ -164,5 +164,14 @@ const Map<String, String> en = {
   "Deleting your account will unsubscribe you from all mailing list":
       "Deleting your account will unsubscribe you from all mailing list",
   "Confirm Account Deletion": "Confirm Account Deletion",
-  "Delete my Account": "Delete my Account"
+  "Delete my Account": "Delete my Account",
+  "Prescription: ": "Prescription:",
+  "Add Prescription": "Add Prescription",
+  "Prescription for this patient": "Prescription for this patient",
+  'Are you sure you want to add a prescription for this client?':
+      'Are you sure you want to add a prescription for this client?',
+  "Confirm edited prescription":
+      "Are you sure you wanto edit this prescription?",
+  "Message confirm delete prescription":
+      "Are you sure you want to delete this prescription?",
 };

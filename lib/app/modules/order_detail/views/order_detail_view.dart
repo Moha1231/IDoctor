@@ -31,7 +31,16 @@ class OrderDetailView extends GetView<OrderDetailController> {
         ),
         actions: [
           //list if widget in appbar actions
+          IconButton(
+              onPressed: () {
+                controller.gotoListPrescriptionList();
+              },
+              icon: Icon(Icons.description_outlined)),
           PopupMenuButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black,
+            ),
             color: Colors.white,
             itemBuilder: (context) => [
               PopupMenuItem<int>(

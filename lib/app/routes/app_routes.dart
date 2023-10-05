@@ -27,6 +27,8 @@ abstract class Routes {
   static const LIST_CHAT = _Paths.LIST_CHAT;
   static const REVIEW = _Paths.REVIEW;
   static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
+  static const LIST_PRESCRIPTION = _Paths.LIST_PRESCRIPTION;
+  static const ADD_PRESCRIPTION = _Paths.ADD_PRESCRIPTION;
 }
 
 abstract class _Paths {
@@ -51,4 +53,6 @@ abstract class _Paths {
   static const LIST_CHAT = '/list-chat';
   static const REVIEW = '/review';
   static const DELETE_ACCOUNT = '/delete-account';
+  static const LIST_PRESCRIPTION = '/list-prescription';
+  static const ADD_PRESCRIPTION = '/add-prescription';
 }

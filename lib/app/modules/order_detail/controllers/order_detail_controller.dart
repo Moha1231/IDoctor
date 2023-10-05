@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hallo_doctor_doctor_app/app/models/timeslot_model.dart';
+import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import 'package:hallo_doctor_doctor_app/app/services/notification_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/timeslot_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/videocall_service.dart';
@@ -70,5 +71,9 @@ class OrderDetailController extends GetxController {
       EasyLoading.dismiss();
       Fluttertoast.showToast(msg: e.toString());
     }
+  }
+
+  void gotoListPrescriptionList() {
+    Get.toNamed(Routes.LIST_PRESCRIPTION, arguments: orderedTimeslot);
   }
 }

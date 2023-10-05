@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_doctor_detail/bindings/add_doctor_detail_binding.dart';
 import '../modules/add_doctor_detail/views/add_doctor_detail_view.dart';
+import '../modules/add_prescription/bindings/add_prescription_binding.dart';
+import '../modules/add_prescription/views/add_prescription_view.dart';
 import '../modules/add_timeslot/bindings/add_timeslot_binding.dart';
 import '../modules/add_timeslot/views/add_timeslot_view.dart';
 import '../modules/appointment/bindings/appointment_binding.dart';
@@ -22,6 +24,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/list_chat/bindings/list_chat_binding.dart';
 import '../modules/list_chat/views/list_chat_view.dart';
+import '../modules/list_prescription/bindings/list_prescription_binding.dart';
+import '../modules/list_prescription/views/list_prescription_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/order/bindings/order_binding.dart';
@@ -156,6 +160,16 @@ class AppPages {
       name: _Paths.DELETE_ACCOUNT,
       page: () => const DeleteAccountView(),
       binding: DeleteAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_PRESCRIPTION,
+      page: () => const ListPrescriptionView(),
+      binding: ListPrescriptionBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_PRESCRIPTION,
+      page: () => const AddPrescriptionView(),
+      binding: AddPrescriptionBinding(),
     ),
   ];
 }
