@@ -20,6 +20,13 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
-        }
+        },
+        {
+            "name": "Flutter Firebase Emulator",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_firebase_emulators/main_firebase_emulators.dart",
+            "flutterMode": "debug",
+        },
     ]
 }
