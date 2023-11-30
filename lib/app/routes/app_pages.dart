@@ -40,6 +40,8 @@ import '../modules/review/bindings/review_binding.dart';
 import '../modules/review/views/review_view.dart';
 import '../modules/video_call/bindings/video_call_binding.dart';
 import '../modules/video_call/views/video_call_view.dart';
+import '../modules/video_call_jitsi/bindings/video_call_jitsi_binding.dart';
+import '../modules/video_call_jitsi/views/video_call_jitsi_view.dart';
 import '../modules/withdraw_detail/bindings/withdraw_detail_binding.dart';
 import '../modules/withdraw_detail/views/withdraw_detail_view.dart';
 import '../modules/withdraw_method/bindings/withdraw_method_binding.dart';
@@ -170,6 +172,11 @@ class AppPages {
       name: _Paths.ADD_PRESCRIPTION,
       page: () => const AddPrescriptionView(),
       binding: AddPrescriptionBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO_CALL_JITSI,
+      page: () => const VideoCallJitsiView(),
+      binding: VideoCallJitsiBinding(),
     ),
   ];
 }

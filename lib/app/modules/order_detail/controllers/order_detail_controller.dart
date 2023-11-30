@@ -25,7 +25,13 @@ class OrderDetailController extends GetxController {
   @override
   void onClose() {}
   void videoCall() async {
-    //
+    startJitsiVideoCall();
+
+    /// if you wanto use agora uncommentline below and remove startJitsiVideoCall();
+    /// startAgoraVideoCall();
+  }
+
+  void startAgoraVideoCall() async {
     try {
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
       var token =
@@ -37,12 +43,6 @@ class OrderDetailController extends GetxController {
       };
       await VideoCallService()
           .createRoom(orderedTimeslot.timeSlotId!, roomData);
-      // notificationService.notificationStartAppointment(
-      //     DoctorService.doctor!.doctorName!,
-      //     orderedTimeslot.bookByWho!.userId!,
-      //     orderedTimeslot.timeSlotId!,
-      //     token,
-      //     orderedTimeslot.timeSlotId!);
       EasyLoading.dismiss();
       Get.toNamed(
         '/video-call',
@@ -57,6 +57,24 @@ class OrderDetailController extends GetxController {
     } catch (e) {
       printError(info: e.toString());
       Fluttertoast.showToast(msg: e.toString());
+      EasyLoading.dismiss();
+    }
+  }
+
+  void startJitsiVideoCall() async {
+    try {
+      final roomData = <String, dynamic>{
+        'room': orderedTimeslot.timeSlotId,
+        'token': 'token',
+        'timestamp': Timestamp.fromDate(DateTime.now())
+      };
+      await VideoCallService()
+          .createRoom(orderedTimeslot.timeSlotId!, roomData);
+      Get.toNamed(Routes.VIDEO_CALL_JITSI, arguments: orderedTimeslot);
+    } catch (e) {
+      printError(info: e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    } finally {
       EasyLoading.dismiss();
     }
   }

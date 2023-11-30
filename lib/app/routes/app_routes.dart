@@ -29,6 +29,7 @@ abstract class Routes {
   static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
   static const LIST_PRESCRIPTION = _Paths.LIST_PRESCRIPTION;
   static const ADD_PRESCRIPTION = _Paths.ADD_PRESCRIPTION;
+  static const VIDEO_CALL_JITSI = _Paths.VIDEO_CALL_JITSI;
 }
 
 abstract class _Paths {
@@ -55,4 +56,5 @@ abstract class _Paths {
   static const DELETE_ACCOUNT = '/delete-account';
   static const LIST_PRESCRIPTION = '/list-prescription';
   static const ADD_PRESCRIPTION = '/add-prescription';
+  static const VIDEO_CALL_JITSI = '/video-call-jitsi';
 }
