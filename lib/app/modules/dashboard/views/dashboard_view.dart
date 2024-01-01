@@ -36,6 +36,7 @@ class DashboardView extends GetView<DashboardController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 IconButton(
+                  key: Key('homeIconButton'),
                   //update the bottom app bar view each time an item is clicked
                   onPressed: () {
                     controller.updateTabSelection(0);
@@ -50,6 +51,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                 ),
                 IconButton(
+                  key: Key('calendarIconButton'),
                   onPressed: () {
                     controller.activateTabAppointment();
                   },
@@ -62,6 +64,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                 ),
                 IconButton(
+                  key: Key('appointmentIconButton'),
                   onPressed: () {
                     controller.updateTabSelection(2);
                     controller.initTabOrder();
@@ -75,6 +78,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                 ),
                 IconButton(
+                  key: Key('chatIconButton'),
                   onPressed: () {
                     controller.updateTabSelection(3);
                     //controller.initTabOrder();
@@ -88,6 +92,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                 ),
                 IconButton(
+                  key: Key('profileIconButton'),
                   onPressed: () {
                     controller.updateTabSelection(4);
                   },

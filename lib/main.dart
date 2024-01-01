@@ -41,7 +41,7 @@ Future main() async {
 
 class MainDoctorApp extends StatelessWidget {
   MainDoctorApp({super.key, required this.isUserLogin});
-  bool isUserLogin;
+  final bool isUserLogin;
 
   @override
   Widget build(BuildContext context) {

@@ -71,6 +71,7 @@ dev_dependencies:
   change_app_package_name: ^1.0.0
   build_runner: ^2.1.11
   freezed: ^2.4.3
+  patrol: ^3.3.0
 
 flutter:
   uses-material-design: true

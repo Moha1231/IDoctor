@@ -31,7 +31,9 @@ if (keystorePropertiesFile.exists()) {
    }
 android {
     compileSdkVersion 33
-
+    testOptions {
+        execution "ANDROIDX_TEST_ORCHESTRATOR"
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,6 +41,8 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        testInstrumentationRunner "pl.leancode.patrol.PatrolJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: "true"
         applicationId "com.dancingwhale.hallo_doctor_doctor_app"
         minSdkVersion 24
         targetSdkVersion 33
@@ -65,4 +69,7 @@ android {
 
 flutter {
     source '../..'
+}
+dependencies {
+      androidTestUtil "androidx.test:orchestrator:1.4.2"
 }
