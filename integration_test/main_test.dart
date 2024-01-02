@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/services/firebase_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/local_notification_service.dart';

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
-
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:get/get.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat_ui/flutter_chat_ui_types.dart' as types;
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 import '../controllers/list_chat_controller.dart';
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 
 import 'package:get/get.dart';
 
 import '../../../styles/styles.dart';
 import '../controllers/chat_controller.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat_ui/flutter_chat_ui_types.dart' as types;
 
 class ChatView extends GetView<ChatController> {
   @override

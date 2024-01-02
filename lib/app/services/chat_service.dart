@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat_ui/flutter_chat_ui_types.dart' as types;
 
 class ChatService {
   Future getListChat() async {
@@ -26,10 +26,10 @@ class ChatService {
           .get();
       var roomDataFirebase = roomRef.data();
       if (roomDataFirebase == null) return null;
-      int createdAt =
-          (roomDataFirebase['createdAt'] as Timestamp).toDate().millisecond;
-      int updatedAt =
-          (roomDataFirebase['updatedAt'] as Timestamp).toDate().millisecond;
+      DateTime createdAt =
+          (roomDataFirebase['createdAt'] as Timestamp).toDate();
+      DateTime updatedAt =
+          (roomDataFirebase['updatedAt'] as Timestamp).toDate();
       List<types.User> listUser = (roomDataFirebase['userIds'] as List<dynamic>)
           .map((e) => types.User(id: e))
           .toList();

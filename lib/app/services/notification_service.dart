@@ -3,10 +3,8 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:hallo_doctor_doctor_app/app/modules/chat/controllers/chat_controller.dart';
 import 'package:hallo_doctor_doctor_app/app/routes/app_pages.dart';
 import '../styles/styles.dart';
