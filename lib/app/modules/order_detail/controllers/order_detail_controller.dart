@@ -25,10 +25,9 @@ class OrderDetailController extends GetxController {
   @override
   void onClose() {}
   void videoCall() async {
-    startJitsiVideoCall();
-
+    // startJitsiVideoCall();
     /// if you wanto use agora uncommentline below and remove startJitsiVideoCall();
-    /// startAgoraVideoCall();
+    startAgoraVideoCall();
   }
 
   void startAgoraVideoCall() async {
