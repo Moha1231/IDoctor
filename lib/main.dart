@@ -6,15 +6,12 @@ import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hallo_doctor_doctor_app/app/services/local_notification_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/constants.dart';
-
 import 'app/routes/app_pages.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
 import 'app/services/firebase_service.dart';
 import 'app/utils/localization.dart';
 
