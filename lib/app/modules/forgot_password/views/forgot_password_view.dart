@@ -4,7 +4,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../controllers/forgot_password_controller.dart';
 
@@ -61,22 +60,16 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
               SizedBox(
                 height: 25,
               ),
-              RoundedLoadingButton(
-                resetAfterDuration: true,
-                resetDuration: Duration(seconds: 7),
-                child: Text('Reset Password'.tr,
-                    style: TextStyle(color: Colors.white)),
-                controller: controller.roundedBtnController,
+              ElevatedButton(
                 onPressed: () {
-                  _formKey.currentState!.save();
                   if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
                     controller
                         .resetPassword(_formKey.currentState!.value['email']);
-                  } else {
-                    controller.roundedBtnController.error();
                   }
                 },
-              ),
+                child: Text('Reset Password'.tr),
+              )
             ],
           ),
         ),

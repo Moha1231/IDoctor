@@ -122,7 +122,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                 SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
-                    primary: Colors.blue,
+                    foregroundColor: Colors.blue,
                     padding: EdgeInsets.all(20),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),

@@ -71,8 +71,8 @@ class BalanceView extends GetView<BalanceController> {
                         child: Text("Withdraw".tr),
                         onPressed: () => controller.withdraw(),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          onPrimary: Colors.white,
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0),
                           ),

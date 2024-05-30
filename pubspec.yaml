@@ -7,7 +7,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
-  get: 4.6.1
+  get: 4.6.6
   flutter:
     sdk: flutter
   google_sign_in: ^5.1.1
@@ -25,7 +25,6 @@ dependencies:
   cached_network_image: ^3.3.0
   string_validator: ^0.3.0
   lottie: ^1.2.1
-  rounded_loading_button: ^2.0.9
   date_count_down:
   flutter_rating_bar: ^4.0.1
   package_info_plus: ^4.1.0
@@ -37,9 +36,12 @@ dependencies:
   firebase_database: ^10.0.9
   firebase_messaging: ^14.2.1
   flutter_dotenv: ^5.0.2
+  # flutter_chat_ui:
+  #   git:
+  #     url: https://github.com/amsyary/flutter_chat_ui.git
   flutter_chat_ui:
-    git:
-      url: https://github.com/amsyary/flutter_chat_ui.git
+    path: ../../DancingWhale/Migrasi Error Package Change Name/flutter_chat_ui
+    # path: ../flutter_chat_ui
   uuid: ^3.0.6
   file_picker: ^5.1.0
   mime: ^1.0.1
@@ -70,7 +72,7 @@ dev_dependencies:
   change_app_package_name: ^1.0.0
   build_runner: ^2.1.11
   freezed: ^2.4.3
-  patrol: ^3.3.0
+  patrol: ^3.7.2
 
 flutter:
   uses-material-design: true
