@@ -36,12 +36,12 @@ dependencies:
   firebase_database: ^10.0.9
   firebase_messaging: ^14.2.1
   flutter_dotenv: ^5.0.2
-  # flutter_chat_ui:
-  #   git:
-  #     url: https://github.com/amsyary/flutter_chat_ui.git
   flutter_chat_ui:
-    path: ../../DancingWhale/Migrasi Error Package Change Name/flutter_chat_ui
-    # path: ../flutter_chat_ui
+    git:
+      url: https://github.com/amsyary/flutter_chat_ui.git
+  # flutter_chat_ui:
+  #   path: ../../DancingWhale/Migrasi Error Package Change Name/flutter_chat_ui
+  #   # path: ../flutter_chat_ui
   uuid: ^3.0.6
   file_picker: ^5.1.0
   mime: ^1.0.1
