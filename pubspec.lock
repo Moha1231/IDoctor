@@ -561,9 +561,11 @@ packages:
   flutter_chat_ui:
     dependency: "direct main"
     description:
-      path: "../../DancingWhale/Migrasi Error Package Change Name/flutter_chat_ui"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "3cd875f87657260a7f369e201dbba8ab0cc58971"
+      url: "https://github.com/amsyary/flutter_chat_ui.git"
+    source: git
     version: "1.5.7"
   flutter_dotenv:
     dependency: "direct main"
