@@ -1,4 +1,4 @@
-package com.dancingwhale.hallo_doctor_doctor_app; // replace "com.example.myapp" with your app's package
+package com.checkupdoctor.ztone; // replace "com.example.myapp" with your app's package
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;

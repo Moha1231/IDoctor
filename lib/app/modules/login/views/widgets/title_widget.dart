@@ -17,14 +17,14 @@ Widget titleApp() {
       RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-            text: 'Doctor'.tr,
+            text: 'I'.tr,
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
                 color: Styles.secondaryBlueColor),
             children: [
               TextSpan(
-                text: ' App'.tr,
+                text: ' Doctor'.tr,
                 style: TextStyle(color: Colors.black, fontSize: 30),
               ),
             ]),

@@ -5,7 +5,7 @@ import 'package:hallo_doctor_doctor_app/app/services/withdraw_service.dart';
 import 'package:hallo_doctor_doctor_app/app/utils/exceptions.dart';
 
 class WithdrawMethodController extends GetxController
-  with StateMixin<List<WithdrawMethod>> {
+    with StateMixin<List<WithdrawMethod>> {
   final amount = Get.arguments;
   @override
   void onInit() {
@@ -13,9 +13,9 @@ class WithdrawMethodController extends GetxController
     getAllPaymentMethod();
   }
 
-  void addPaypal(String name, String email) {
+  void addPaypal(String name, String email, String method) {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    WithdrawService().addPaypalMethod(name, email).then((value) {
+    WithdrawService().addPaypalMethod(name, email, method).then((value) {
       Get.back();
       getAllPaymentMethod();
     }).whenComplete(() => EasyLoading.dismiss());

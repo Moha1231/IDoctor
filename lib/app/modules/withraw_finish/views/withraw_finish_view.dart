@@ -34,7 +34,7 @@ class WithrawFinishView extends GetView<WithrawFinishController> {
               'Perfect, you have submitted a money withdrawal, we will immediately verify it, you will immediately get a notification when the withdrawal is verified'
                   .tr,
               textAlign: TextAlign.center,
-              style: GoogleFonts.nunito(
+              style: GoogleFonts.cairo(
                 fontSize: 13,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,

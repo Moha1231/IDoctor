@@ -7,9 +7,9 @@ import 'package:hallo_doctor_doctor_app/app/modules/login/views/widgets/submit_b
 import 'package:hallo_doctor_doctor_app/app/modules/withdraw_method/controllers/withdraw_method_controller.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
-String method = "Paypal";
+String method = "Instapay";
 
-class AddPaypalPage extends GetView<WithdrawMethodController> {
+class Addinstapay extends GetView<WithdrawMethodController> {
   final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class AddPaypalPage extends GetView<WithdrawMethodController> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            'Add Paypal',
+            'Add Instapay',
             style: Styles.appBarTextStyle,
           ),
           centerTitle: true,
@@ -52,18 +52,36 @@ class AddPaypalPage extends GetView<WithdrawMethodController> {
                   name: 'email',
                   validator: FormBuilderValidators.compose(
                     [
-                      FormBuilderValidators.email(),
+                      FormBuilderValidators.minLength(6),
+                      FormBuilderValidators.maxLength(50),
                     ],
                   ),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Paypal Email',
+                    hintText: 'INSTAPAY EMAIL',
                   ),
                   onEditingComplete: () => node.nextFocus(),
                 ),
                 SizedBox(
                   height: 30,
                 ),
+                //FormBuilderTextField(
+                // name: 'method',
+                // enabled: false,
+                // validator: FormBuilderValidators.compose(
+                //  [
+                //    FormBuilderValidators.minLength(2),
+                //  ],
+                //   ),
+                //   decoration: InputDecoration(
+                //    border: OutlineInputBorder(),
+                //     hintText: 'Instapay',
+                //   ),
+                //    onEditingComplete: () => node.nextFocus(),
+                //  ),
+                //   SizedBox(
+                //    height: 30,
+                //    ),
                 SubmitButton(
                     onTap: () {
                       _formKey.currentState!.save();

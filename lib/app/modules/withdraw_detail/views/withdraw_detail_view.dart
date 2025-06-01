@@ -21,7 +21,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
         centerTitle: true,
         backgroundColor: Colors.white,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.blue[400],
+          statusBarColor: Color.fromARGB(255, 1, 96, 124),
         ),
       ),
       body: SingleChildScrollView(
@@ -32,7 +32,7 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
               Text(
                   'Please make sure the data below is correct, we will make a withdrawal after you confirm it'
                       .tr,
-                  style: GoogleFonts.nunito(
+                  style: GoogleFonts.cairo(
                       fontSize: 13, color: Styles.greyTextColor)),
               SizedBox(
                 height: 10,
@@ -60,10 +60,13 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                           TableRow(children: [
                             SizedBox(
                                 height: 30, child: Text('Withdraw Method'.tr)),
-                            SizedBox(height: 30, child: Text(': Paypal')),
+                            SizedBox(
+                                height: 30,
+                                child: Text(
+                                    ': ' + controller.withdrawMethod.method!)),
                           ]),
                           TableRow(children: [
-                            SizedBox(height: 30, child: Text('Name')),
+                            SizedBox(height: 30, child: Text('Name'.tr)),
                             SizedBox(
                                 height: 30,
                                 child: Text(
@@ -76,7 +79,9 @@ class WithdrawDetailView extends GetView<WithdrawDetailController> {
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                    ': ' + controller.withdrawMethod.email!),
+                                  ': ' + controller.withdrawMethod.email!,
+                                  style: GoogleFonts.inter(fontSize: 15),
+                                ),
                               ),
                             ),
                           ]),

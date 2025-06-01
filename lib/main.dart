@@ -14,9 +14,12 @@ import 'app/routes/app_pages.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'app/services/firebase_service.dart';
 import 'app/utils/localization.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(const Duration(seconds: 5));
+  FlutterNativeSplash.remove();
   await dotenv.load();
   await Firebase.initializeApp();
   LocalNotificationService().initNotification();
@@ -44,7 +47,7 @@ class MainDoctorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Hallo Doctor Doctor App",
+        title: "I Doctor",
         initialRoute: isUserLogin ? AppPages.dashboard : AppPages.login,
         getPages: AppPages.routes,
         builder: EasyLoading.init(),

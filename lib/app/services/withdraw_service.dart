@@ -5,12 +5,12 @@ import 'package:hallo_doctor_doctor_app/app/services/auth_service.dart';
 import 'package:hallo_doctor_doctor_app/app/services/user_service.dart';
 
 class WithdrawService {
-  Future<void> addPaypalMethod(String name, String email) async {
+  Future<void> addPaypalMethod(String name, String email , String method) async {
     try {
       FirebaseFirestore.instance.collection('WitdrawMethod').add({
         'name': name,
         'email': email,
-        'method': 'paypal',
+        'method': method,
         'userId': UserService().currentUserFirebase!.uid
       });
     } on FirebaseException catch (e) {

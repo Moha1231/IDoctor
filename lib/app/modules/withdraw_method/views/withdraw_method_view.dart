@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hallo_doctor_doctor_app/app/modules/withdraw_method/views/add_paypal_page.dart';
 import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
+import 'package:hallo_doctor_doctor_app/app/modules/withdraw_method/views/add_insta_pay.dart';
 
 import '../controllers/withdraw_method_controller.dart';
 import 'widgets/withdraw_method_tile.dart';
@@ -20,48 +21,76 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
-        systemOverlayStyle:
-            SystemUiOverlayStyle(statusBarColor: Colors.blue[400]),
+        systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Color.fromARGB(255, 1, 96, 124)),
         actions: [
           IconButton(
             onPressed: () {
-              Get.defaultDialog(
-                  title: "Chose Withdraw Provider".tr,
-                  content: Container(
-                    width: 250,
-                    height: 50,
-                    child: InkWell(
-                      onTap: () {
-                        Get.off(() => AddPaypalPage());
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 44,
-                            height: 44,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Styles.whiteGreyColor,
-                              image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/paypal_logo.png'),
+              Get.bottomSheet(
+                // title: "Chose Withdraw Provider".tr,
+                //  backgroundColor: Color.fromARGB(255, 1, 135, 147),
+                //  titleStyle: GoogleFonts.cairo(color: Colors.white),
+                //  middleTextStyle: GoogleFonts.cairo(color: Colors.white),
+                Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                  // Column
+                  // height: 250,
+                  // width: 250,
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      Container(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IconButton(
+                                //   iconSize: 10,
+                                icon: Image.asset('assets/images/download1.png',
+                                    height: 150, width: 150),
+                                onPressed: () {
+                                  Get.off(() => AddPaypalPage());
+                                },
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Paypal",
-                            style:
-                                GoogleFonts.nunito(fontWeight: FontWeight.bold),
-                          ),
-                          Spacer(),
-                          Icon(Icons.add)
-                        ],
+                              //    Spacer(),
+
+                              IconButton(
+                                //  iconSize: 10,
+                                icon: Image.asset('assets/images/download2.png',
+                                    height: 150, width: 150),
+                                onPressed: () {
+                                  Get.off(() => Addinstapay());
+                                },
+                              ),
+                            ]),
                       ),
-                    ),
-                  ));
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: Text('Cancel'.tr,
+                                        style: GoogleFonts.cairo()))),
+                            SizedBox(
+                              width: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                barrierColor: Color.fromRGBO(255, 255, 255, 0.5),
+                enableDrag: false,
+              );
             },
             icon: Icon(Icons.add),
           ),
@@ -75,6 +104,7 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
             itemBuilder: (contex, index) => WithdrawMethodTile(
               name: listWithdrawMethod[index].name!,
               email: listWithdrawMethod[index].email!,
+              method: listWithdrawMethod[index].method!,
               onTap: () =>
                   controller.toWithdrawDetail(listWithdrawMethod[index]),
             ),
@@ -86,7 +116,7 @@ class WithdrawMethodView extends GetView<WithdrawMethodController> {
                 'you don\'t have a withdrawal method, please add one, to withdraw your money'
                     .tr,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(fontSize: 15),
+                style: GoogleFonts.cairo(fontSize: 15),
               ),
             ),
           ),

@@ -4,12 +4,18 @@ import 'package:hallo_doctor_doctor_app/app/styles/styles.dart';
 
 class WithdrawMethodTile extends StatelessWidget {
   const WithdrawMethodTile(
-      {Key? key, required this.name, required this.email, required this.onTap})
+      {Key? key,
+      required this.name,
+      required this.email,
+      required this.method,
+      required this.onTap})
       : super(key: key);
 
   final String name;
   final String email;
+  final String method;
   final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -32,37 +38,57 @@ class WithdrawMethodTile extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                SizedBox(
-                  width: 12,
-                ),
-                Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Styles.whiteGreyColor,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/paypal_logo.png'),
+                if (method == "Paypal") ...[
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Styles.whiteGreyColor,
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/download1.png"),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 12,
-                ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                ] else ...[
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Styles.whiteGreyColor,
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/download2.png"),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                ],
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       name,
-                      style: GoogleFonts.nunito(
+                      style: GoogleFonts.cairo(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: Colors.black),
                     ),
                     Text(
-                      'Paypal',
-                      style: GoogleFonts.nunito(
+                      method,
+                      style: GoogleFonts.cairo(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                           color: Colors.grey),
@@ -75,7 +101,7 @@ class WithdrawMethodTile extends StatelessWidget {
               children: <Widget>[
                 Text(
                   email,
-                  style: GoogleFonts.nunito(
+                  style: GoogleFonts.cairo(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
                       color: Styles.greyTextColor),

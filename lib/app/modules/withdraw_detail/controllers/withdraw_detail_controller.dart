@@ -45,7 +45,9 @@ class WithdrawDetailController extends GetxController {
   toPasswordConfirmation() {
     if (amount <= 0) {
       return Get.defaultDialog(
-          content: Text('your balance is not sufficient to withdraw'));
+          buttonColor: Color(0xFFF5821D),
+          backgroundColor: Colors.white,
+          content: Text('your balance is not sufficient to withdraw'.tr));
     }
     Get.to(() => PasswordConfirmationPage());
   }

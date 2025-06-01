@@ -1,4 +1,4 @@
-package com.dancingwhale.hallo_doctor_doctor_app;
+package com.checkupdoctor.ztone;
 
 import io.flutter.embedding.android.FlutterActivity;
 

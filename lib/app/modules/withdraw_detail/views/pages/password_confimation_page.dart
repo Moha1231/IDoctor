@@ -16,7 +16,7 @@ class PasswordConfirmationPage extends GetView<WithdrawDetailController> {
           centerTitle: true,
           backgroundColor: Colors.white,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.blue[400],
+            statusBarColor: Color.fromARGB(255, 1, 96, 124),
           ),
         ),
         body: SafeArea(
